@@ -22,19 +22,14 @@ class _selamatdatangState extends State<selamatdatang> {
   bool _isHiddenPassword = true;
   bool _isHiddenConfrimPassword = true;
 
+  final namadepanController = TextEditingController();
+  final namabelakangController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-
+  final asalinstitusiController = TextEditingController();
+  final kegiatanController = TextEditingController();
   Future userLogin(String email, String password) async {
     HttpOverrides.global = MyHttpOverrides();
-    // Showing CircularProgressIndicator.
-    // setState(() {
-    // visible = true ;
-    // });
-
-    // Getting value from Controller
-    // String email = emailController.text;
-    // String password = passwordController.text;
 
     // SERVER LOGIN API URL
     var url = 'https://20.20.0.245/1.%20KULIAH/MOP-Green/login.php';
@@ -43,6 +38,7 @@ class _selamatdatangState extends State<selamatdatang> {
     // Store all data with Param Name.
     var data = {'email': email, 'password': password};
     // var errorcode = true;
+
     // Starting Web API Call.
     var response = await http.post(Uri.parse(url), body: json.encode(data));
 
@@ -53,64 +49,6 @@ class _selamatdatangState extends State<selamatdatang> {
     // var namadepan = hasiluser['nama_depan'];
     // var namabelakang = hasiluser['nama_belakang'];
     return response.statusCode == 200;
-    //datauser = response.toString();
-    // if (response.statusCode == 200) {
-    //   Navigator.pushReplacement(
-    //     context,
-    //     MaterialPageRoute(
-    //       builder: (context) => const navigasiPage(),
-    //     ),
-    //   );
-    // }
-
-    // print(hasiluser);
-    // print(namadepan);
-    // print(namabelakang);
-    //print(hasiluser['nama_depan']);
-    // print(hasiluser['nama_belakang']);
-
-    // } else {
-    //   _showDialog(context);
-    //   // errorcode = false;
-    //   // print(errorcode);
-    //   // _showDialog(context) {
-    //   //   return showDialog(
-    //   //       context: context,
-    //   //       builder: (_) => AlertDialog(
-    //   //             title: Text('Error'),
-    //   //             content: Text('Incorrect Email or Password'),
-    //   //             actions: <Widget>[
-    //   //               ElevatedButton(
-    //   //                 child: Text('Close'),
-    //   //                 onPressed: () {
-    //   //                   Navigator.of(context).pop();
-    //   //                 },
-    //   //               )
-    //   //             ],
-    //   //           ));
-    // }
-    //   _showDialog(context) {
-    //   return showDialog(
-    //       context: context,
-    //       builder: (_) => AlertDialog(
-    //             title: Text('Error'),
-    //             content: Text('Incorrect Email or Password'),
-    //             actions: <Widget>[
-    //               ElevatedButton(
-    //                 child: Text('Close'),
-    //                 onPressed: () {
-    //                   Navigator.of(context).pop();
-    //                 },
-    //               )
-    //             ],
-    //           ));
-
-    //   _showDialog(context);
-    // }
-    // print(email);
-    // print(password);
-
-    // Dialog error
   }
 
   _showDialog(context) {
@@ -131,23 +69,6 @@ class _selamatdatangState extends State<selamatdatang> {
 
     // _showDialog(context);
   }
-
-  // _showDialog(context) {
-  //   return showDialog(
-  //       context: context,
-  //       builder: (_) => AlertDialog(
-  //             title: Text('Error'),
-  //             content: Text('Username or password wrong'),
-  //             actions: <Widget>[
-  //               ElevatedButton(
-  //                 child: Text('Close me!'),
-  //                 onPressed: () {
-  //                   Navigator.of(context).pop();
-  //                 },
-  //               )
-  //             ],
-  //           ));
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -271,84 +192,100 @@ class _selamatdatangState extends State<selamatdatang> {
                                               ),
 
                                               TextField(
+                                                  controller:
+                                                      namadepanController,
                                                   decoration: InputDecoration(
-                                                border: OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                ),
-                                                hintText: "Nama Depan",
-                                                labelText: "Nama Depan",
-                                              )),
+                                                    border: OutlineInputBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                    ),
+                                                    hintText: "Nama Depan",
+                                                    labelText: "Nama Depan",
+                                                  )),
                                               const SizedBox(
                                                 height: 10,
                                               ),
 
                                               TextField(
+                                                  controller:
+                                                      namabelakangController,
                                                   decoration: InputDecoration(
-                                                border: OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                ),
-                                                hintText: "Nama Belakang",
-                                                labelText: "Nama Belakang",
-                                              )),
+                                                    border: OutlineInputBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                    ),
+                                                    hintText: "Nama Belakang",
+                                                    labelText: "Nama Belakang",
+                                                  )),
+                                              const SizedBox(
+                                                height: 10,
+                                              ),
+
+                                              // TextField(
+                                              //     decoration: InputDecoration(
+                                              //   border: OutlineInputBorder(
+                                              //     borderRadius:
+                                              //         BorderRadius.circular(10),
+                                              //   ),
+                                              //   hintText: "Username",
+                                              //   labelText: "Username",
+                                              // )),
+                                              // const SizedBox(
+                                              //   height: 10,
+                                              // ),
+
+                                              TextField(
+                                                  controller: emailController,
+                                                  decoration: InputDecoration(
+                                                    border: OutlineInputBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                    ),
+                                                    hintText: "Email",
+                                                    labelText: "Email",
+                                                  )),
                                               const SizedBox(
                                                 height: 10,
                                               ),
 
                                               TextField(
+                                                  controller:
+                                                      asalinstitusiController,
                                                   decoration: InputDecoration(
-                                                border: OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                ),
-                                                hintText: "Username",
-                                                labelText: "Username",
-                                              )),
+                                                    border: OutlineInputBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                    ),
+                                                    hintText: "Asal Institusi",
+                                                    labelText: "Asal Institusi",
+                                                  )),
                                               const SizedBox(
                                                 height: 10,
                                               ),
 
                                               TextField(
+                                                  controller:
+                                                      kegiatanController,
                                                   decoration: InputDecoration(
-                                                border: OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                ),
-                                                hintText: "Email",
-                                                labelText: "Email",
-                                              )),
+                                                    border: OutlineInputBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                    ),
+                                                    hintText: "Kegiatan",
+                                                    labelText: "Kegiatan",
+                                                  )),
                                               const SizedBox(
                                                 height: 10,
                                               ),
 
                                               TextField(
-                                                  decoration: InputDecoration(
-                                                border: OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                ),
-                                                hintText: "Asal Institusi",
-                                                labelText: "Asal Institusi",
-                                              )),
-                                              const SizedBox(
-                                                height: 10,
-                                              ),
-
-                                              TextField(
-                                                  decoration: InputDecoration(
-                                                border: OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                ),
-                                                hintText: "Kegiatan",
-                                                labelText: "Kegiatan",
-                                              )),
-                                              const SizedBox(
-                                                height: 10,
-                                              ),
-
-                                              TextField(
+                                                  controller:
+                                                      passwordController,
                                                   obscureText:
                                                       _isHiddenPassword,
                                                   decoration: InputDecoration(
@@ -376,6 +313,8 @@ class _selamatdatangState extends State<selamatdatang> {
                                               ),
 
                                               TextField(
+                                                  controller:
+                                                      passwordController,
                                                   obscureText:
                                                       _isHiddenConfrimPassword,
                                                   decoration: InputDecoration(

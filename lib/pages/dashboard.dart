@@ -271,6 +271,33 @@ class dashboard extends StatefulWidget {
 // }
 
 class _dashboardState extends State<dashboard> {
+  Future<void> setupMqttClient() async {
+    await mqttClientManager.connect();
+    mqttClientManager.subscribe(pubTopic);
+  }
+
+  void setupUpdatesListener() {
+    mqttClientManager
+        .getMessagesStream()!
+        .listen((List<MqttReceivedMessage<MqttMessage?>>? c) {
+      final recMess = c![0].payload as MqttPublishMessage;
+      final pt =
+          MqttPublishPayload.bytesToStringAsString(recMess.payload.message);
+      print('MQTTClient::Message received on topic: <${c[0].topic}> is $pt\n');
+
+      setState(() {
+        suhu = jsonDecode(pt)["temp1"];
+        kelembapan = jsonDecode(pt)["humadity1"];
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    mqttClientManager.disconnect();
+    super.dispose();
+  }
+
   late List<LiveData> chartData;
   late List<LiveData> chartData2;
   late List<LiveData> chartData3;
@@ -289,10 +316,16 @@ class _dashboardState extends State<dashboard> {
   late chart.ChartSeriesController _chartSeriesController8;
   int suhu = 25;
   int kelembapan = 45;
-  String topic = "sensor";
+  String pubTopic = "sensor";
+
+  //import class mqtt
+  MQTTClientManager mqttClientManager = MQTTClientManager();
 
   @override
   void initState() {
+    setupMqttClient();
+    setupUpdatesListener();
+    super.initState();
     // manager.connect();
     //  MQTTManager._client.connect();
     connect(
@@ -1247,8 +1280,8 @@ class LiveData8 {
 Future<MqttServerClient> connect(
     {required onConnected(),
     required onDisconnected(),
-    required onSubscribed(String),
-    required onUnsubscribed(String)
+    required onSubscribed(String topic),
+    required onUnsubscribed(String? topic)
     // ,required onSubscribed()
     }) async {
   MqttServerClient client =
