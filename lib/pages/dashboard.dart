@@ -328,20 +328,20 @@ class _dashboardState extends State<dashboard> {
     super.initState();
     // manager.connect();
     //  MQTTManager._client.connect();
-    connect(
-        onConnected: () {
-          print("Connected");
-        },
-        onDisconnected: () {
-          print("Disconnected from server");
-        },
-        onSubscribed: (String) {
-          // MqttServerClient.withPort('1883');
-          print("vhksdbbfgsvadfjqbshdfvqshadbfvhsdfabsfhadsbfhsgdbfyhds");
-        },
-        onUnsubscribed: (String) {}
-        // print("gagal subscribe");
-        );
+    // connect(
+    //     onConnected: () {
+    //       print("Connected");
+    //     },
+    //     onDisconnected: () {
+    //       print("Disconnected from server");
+    //     },
+    //     onSubscribed: (String) {
+    //       // MqttServerClient.withPort('1883');
+    //       print("Succcess subscribe");
+    //     },
+    //     onUnsubscribed: (String) {}
+    //     // print("gagal subscribe");
+    //     );
     chartData = getChartData();
     chartData2 = getChartData2();
     chartData3 = getChartData3();
@@ -1277,50 +1277,50 @@ class LiveData8 {
 }
 
 // Backup code pleas dont delete it
-Future<MqttServerClient> connect(
-    {required onConnected(),
-    required onDisconnected(),
-    required onSubscribed(String topic),
-    required onUnsubscribed(String? topic)
-    // ,required onSubscribed()
-    }) async {
-  MqttServerClient client =
-      MqttServerClient.withPort('20.20.0.245', 'flutter_client', 1883);
-  // final String opic = "sensor";
-  // client.port = 9001;
+// Future<MqttServerClient> connect(
+//     {required onConnected(),
+//     required onDisconnected(),
+//     required onSubscribed(String topic),
+//     required onUnsubscribed(String? topic)
+//     // ,required onSubscribed()
+//     }) async {
+//   MqttServerClient client =
+//       MqttServerClient.withPort('10.10.0.167', 'flutter', 1883);
+//   // final String opic = "sensor";
+//   // client.port = 9001;
 
-  client.logging(on: true);
-  client.onConnected = onConnected;
-  client.onDisconnected = onDisconnected;
-  // client.onSubscribed = onSubscribed;
-  client.onUnsubscribed = onUnsubscribed;
-  client.onSubscribed = onSubscribed;
-  // client.onSubscribeFail = onSubscribeFail;
-  // client.pongCallback = pong;
+//   client.logging(on: true);
+//   client.onConnected = onConnected;
+//   client.onDisconnected = onDisconnected;
+//   // client.onSubscribed = onSubscribed;
+//   client.onUnsubscribed = onUnsubscribed;
+//   client.onSubscribed = onSubscribed;
+//   // client.onSubscribeFail = onSubscribeFail;
+//   // client.pongCallback = pong;
 
-  final connMessage = MqttConnectMessage()
-      .authenticateAs('', '')
-      // .keepAliveFor(60)
-      .withWillTopic('willtopic')
-      .withWillMessage('Will message')
-      .startClean()
-      .withWillQos(MqttQos.atLeastOnce);
-  client.connectionMessage = connMessage;
-  try {
-    await client.connect();
-  } catch (e) {
-    print('Exception: $e');
-    client.disconnect();
-  }
+//   final connMessage = MqttConnectMessage()
+//       .authenticateAs('', '')
+//       // .keepAliveFor(60)
+//       .withWillTopic('willtopic')
+//       .withWillMessage('Will message')
+//       .startClean()
+//       .withWillQos(MqttQos.atLeastOnce);
+//   client.connectionMessage = connMessage;
+//   try {
+//     await client.connect();
+//   } catch (e) {
+//     print('Exception: $e');
+//     client.disconnect();
+//   }
 
-  client.updates?.listen((List<MqttReceivedMessage<MqttMessage>> c) {
-    // final MqttMessage message = c[0].payload;
-    // print(message);
-    // final payload =
-    //     MqttPublishPayload.bytesToStringAsString(message);
+//   client.updates?.listen((List<MqttReceivedMessage<MqttMessage>> c) {
+//     // final MqttMessage message = c[0].payload;
+//     // print(message);
+//     // final payload =
+//     //     MqttPublishPayload.bytesToStringAsString(message);
 
-    // print('Received message:$payload from topic: ${c[0].topic}>');
-  });
+//     // print('Received message:$payload from topic: ${c[0].topic}>');
+//   });
 
-  return client;
-}
+//   return client;
+// }

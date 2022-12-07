@@ -28,15 +28,52 @@ class _selamatdatangState extends State<selamatdatang> {
   final passwordController = TextEditingController();
   final asalinstitusiController = TextEditingController();
   final kegiatanController = TextEditingController();
+
+  final regisemailController = TextEditingController();
+  final regispasswordController = TextEditingController();
+// Function login
+
   Future userLogin(String email, String password) async {
     HttpOverrides.global = MyHttpOverrides();
 
     // SERVER LOGIN API URL
-    var url = 'https://20.20.0.245/1.%20KULIAH/MOP-Green/login.php';
+    var url = 'http://10.10.0.167/1.%20KULIAH/MOP-Green/login.php';
     //  Uri.parse(url);
 
     // Store all data with Param Name.
     var data = {'email': email, 'password': password};
+    // var errorcode = true;
+
+    // Starting Web API Call.
+    var response = await http.post(Uri.parse(url), body: json.encode(data));
+
+    // Getting Server response into variable.
+    var message = response.statusCode;
+    //var datauser = response.body;
+    //var hasiluser = jsonDecode(datauser);
+    // var namadepan = hasiluser['nama_depan'];
+    // var namabelakang = hasiluser['nama_belakang'];
+    return response.statusCode == 200;
+  }
+
+  //funvtion to register
+  Future userRegister(String userFN, String userLN, String userAsalInstitusi,
+      String userKegiatan, String userEmail, String userPassword) async {
+    HttpOverrides.global = MyHttpOverrides();
+
+    // SERVER LOGIN API URL
+    var url = 'http://10.10.0.167/1.%20KULIAH/MOP-Green/register.php';
+    //  Uri.parse(url);
+
+    // Store all data with Param Name.
+    var data = {
+      'nama_depan': userFN,
+      'nama_belakang': userLN,
+      'asal_institusi': userAsalInstitusi,
+      'kegiatan': userKegiatan,
+      'email': userEmail,
+      'password': userPassword
+    };
     // var errorcode = true;
 
     // Starting Web API Call.
@@ -237,7 +274,8 @@ class _selamatdatangState extends State<selamatdatang> {
                                               // ),
 
                                               TextField(
-                                                  controller: emailController,
+                                                  controller:
+                                                      regisemailController,
                                                   decoration: InputDecoration(
                                                     border: OutlineInputBorder(
                                                       borderRadius:
@@ -285,7 +323,7 @@ class _selamatdatangState extends State<selamatdatang> {
 
                                               TextField(
                                                   controller:
-                                                      passwordController,
+                                                      regispasswordController,
                                                   obscureText:
                                                       _isHiddenPassword,
                                                   decoration: InputDecoration(
@@ -314,7 +352,7 @@ class _selamatdatangState extends State<selamatdatang> {
 
                                               TextField(
                                                   controller:
-                                                      passwordController,
+                                                      regispasswordController,
                                                   obscureText:
                                                       _isHiddenConfrimPassword,
                                                   decoration: InputDecoration(
@@ -351,7 +389,140 @@ class _selamatdatangState extends State<selamatdatang> {
                                                           .width -
                                                       2 * defaultmargin,
                                                   child: ElevatedButton(
-                                                      onPressed: () {},
+                                                      onPressed: () async {
+                                                        try {
+                                                          String namadepan =
+                                                              namadepanController
+                                                                  .text;
+                                                          String namabelakang =
+                                                              namabelakangController
+                                                                  .text;
+                                                          String asalinstitusi =
+                                                              asalinstitusiController
+                                                                  .text;
+                                                          String kegiatan =
+                                                              kegiatanController
+                                                                  .text;
+                                                          String
+                                                              regisuseremail =
+                                                              regisemailController
+                                                                  .text;
+                                                          String
+                                                              regisuserpassword =
+                                                              regispasswordController
+                                                                  .text;
+
+                                                          if (namadepan
+                                                                  .isNotEmpty &&
+                                                              namabelakang
+                                                                  .isNotEmpty &&
+                                                              asalinstitusi
+                                                                  .isNotEmpty &&
+                                                              kegiatan
+                                                                  .isNotEmpty &&
+                                                              regisuseremail
+                                                                  .isNotEmpty &&
+                                                              regisuserpassword
+                                                                  .isNotEmpty) {
+                                                            bool response =
+                                                                await userRegister(
+                                                                    namadepan,
+                                                                    namabelakang,
+                                                                    asalinstitusi,
+                                                                    kegiatan,
+                                                                    regisuseremail,
+                                                                    regisuserpassword);
+                                                            if (response) {
+                                                              showDialog(
+                                                                  context:
+                                                                      context,
+                                                                  builder: (_) =>
+                                                                      AlertDialog(
+                                                                        title: Text(
+                                                                            'Success'),
+                                                                        content:
+                                                                            Text('Registrasi berhasil'),
+                                                                        actions: <
+                                                                            Widget>[
+                                                                          ElevatedButton(
+                                                                            child:
+                                                                                Text('Close'),
+                                                                            onPressed:
+                                                                                () {
+                                                                              Navigator.of(context).pop();
+                                                                            },
+                                                                          )
+                                                                        ],
+                                                                      ));
+
+                                                              // Navigator
+                                                              //     .pushReplacement(
+                                                              //   context,
+                                                              //   MaterialPageRoute(
+                                                              //     builder:
+                                                              //         (context) =>
+                                                              //             const selamatdatang(),
+                                                              //   ),
+                                                              // );
+                                                            } else {
+                                                              showDialog(
+                                                                  context:
+                                                                      context,
+                                                                  builder: (_) =>
+                                                                      AlertDialog(
+                                                                        title: Text(
+                                                                            'Error'),
+                                                                        content:
+                                                                            Text('Registrasi gagal, silakan registrasi ulang!'),
+                                                                        actions: <
+                                                                            Widget>[
+                                                                          ElevatedButton(
+                                                                            child:
+                                                                                Text('Close'),
+                                                                            onPressed:
+                                                                                () {
+                                                                              Navigator.of(context).pop();
+                                                                            },
+                                                                          )
+                                                                        ],
+                                                                      ));
+                                                            }
+                                                          } else {
+                                                            showDialog(
+                                                                context:
+                                                                    context,
+                                                                builder: (_) =>
+                                                                    AlertDialog(
+                                                                      title: Text(
+                                                                          'Error'),
+                                                                      content: Text(
+                                                                          'Semua form harus diisi'),
+                                                                      actions: <
+                                                                          Widget>[
+                                                                        ElevatedButton(
+                                                                          child:
+                                                                              Text('Close'),
+                                                                          onPressed:
+                                                                              () {
+                                                                            Navigator.of(context).pop();
+                                                                          },
+                                                                        )
+                                                                      ],
+                                                                    ));
+                                                          }
+                                                        } catch (err) {
+                                                          print(err);
+                                                          // print(errorcode);
+                                                          // print(
+                                                          //     'error =  $err');
+                                                          // if (errorcode ==
+                                                          //     false) {
+                                                          //   _showDialog(
+                                                          //       context);
+                                                          // }
+                                                        }
+                                                        // userLogin();
+                                                      },
                                                       style: ElevatedButton.styleFrom(
                                                           primary: button2Color,
                                                           shape: RoundedRectangleBorder(
