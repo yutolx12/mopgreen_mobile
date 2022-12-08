@@ -314,8 +314,8 @@ class _dashboardState extends State<dashboard> {
   late chart.ChartSeriesController _chartSeriesController6;
   late chart.ChartSeriesController _chartSeriesController7;
   late chart.ChartSeriesController _chartSeriesController8;
-  int suhu = 25;
-  int kelembapan = 45;
+  int suhu = 0;
+  int kelembapan = 0;
   String pubTopic = "sensor";
 
   //import class mqtt
@@ -416,7 +416,7 @@ class _dashboardState extends State<dashboard> {
                                         pointers: <GaugePointer>[
                                           RangePointer(
                                             color: Colors.white,
-                                            value: 60,
+                                            value: suhu.toDouble(),
                                             onValueChanged: (value) {},
                                             cornerStyle: CornerStyle.bothCurve,
                                             onValueChangeEnd: (value) {},
@@ -458,7 +458,7 @@ class _dashboardState extends State<dashboard> {
                                   style: meTextStyle,
                                 ),
                                 Text(
-                                  "25",
+                                  "23",
                                   style: wikwokTextStyle,
                                 ),
                                 const SizedBox(
@@ -469,7 +469,7 @@ class _dashboardState extends State<dashboard> {
                                   style: meTextStyle,
                                 ),
                                 Text(
-                                  "25",
+                                  "28",
                                   style: wikwokTextStyle,
                                 ),
                                 const SizedBox(
@@ -480,7 +480,7 @@ class _dashboardState extends State<dashboard> {
                                   style: meTextStyle,
                                 ),
                                 Text(
-                                  "25",
+                                  "21",
                                   style: wikwokTextStyle,
                                 ),
                               ],
@@ -511,7 +511,7 @@ class _dashboardState extends State<dashboard> {
                                         pointers: <GaugePointer>[
                                           RangePointer(
                                             color: Colors.white,
-                                            value: 60,
+                                            value: kelembapan.toDouble(),
                                             onValueChanged: (value) {},
                                             cornerStyle: CornerStyle.bothCurve,
                                             onValueChangeEnd: (value) {},
@@ -554,7 +554,7 @@ class _dashboardState extends State<dashboard> {
                                   style: meTextStyle,
                                 ),
                                 Text(
-                                  "25",
+                                  "68",
                                   style: wikwokTextStyle,
                                 ),
                                 const SizedBox(
@@ -565,7 +565,7 @@ class _dashboardState extends State<dashboard> {
                                   style: meTextStyle,
                                 ),
                                 Text(
-                                  "25",
+                                  "74",
                                   style: wikwokTextStyle,
                                 ),
                                 const SizedBox(
@@ -576,7 +576,7 @@ class _dashboardState extends State<dashboard> {
                                   style: meTextStyle,
                                 ),
                                 Text(
-                                  "25",
+                                  "65",
                                   style: wikwokTextStyle,
                                 ),
                               ],

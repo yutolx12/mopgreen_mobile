@@ -48,7 +48,8 @@ class _selamatdatangState extends State<selamatdatang> {
     var response = await http.post(Uri.parse(url), body: json.encode(data));
 
     // Getting Server response into variable.
-    var message = response.statusCode;
+    var message = response.body;
+    print(message);
     //var datauser = response.body;
     //var hasiluser = jsonDecode(datauser);
     // var namadepan = hasiluser['nama_depan'];
