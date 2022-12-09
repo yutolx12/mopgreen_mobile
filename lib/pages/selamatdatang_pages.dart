@@ -37,7 +37,7 @@ class _selamatdatangState extends State<selamatdatang> {
     HttpOverrides.global = MyHttpOverrides();
 
     // SERVER LOGIN API URL
-    var url = 'http://10.10.0.167/1.%20KULIAH/MOP-Green/login.php';
+    var url = 'http://10.10.7.136/1.%20KULIAH/MOP-Green/login.php';
     //  Uri.parse(url);
 
     // Store all data with Param Name.
@@ -48,12 +48,18 @@ class _selamatdatangState extends State<selamatdatang> {
     var response = await http.post(Uri.parse(url), body: json.encode(data));
 
     // Getting Server response into variable.
-    var message = response.body;
-    print(message);
-    //var datauser = response.body;
-    //var hasiluser = jsonDecode(datauser);
-    // var namadepan = hasiluser['nama_depan'];
-    // var namabelakang = hasiluser['nama_belakang'];
+    // var message = response.body;
+    // print(message);
+    var datauser = response.body;
+    var hasiluser = jsonDecode(datauser);
+    var namadepan = hasiluser['nama_depan'];
+    var namabelakang = hasiluser['nama_belakang'];
+    var asalinstitusi = hasiluser['asal_institusi'];
+    var kegiatan = hasiluser['kegiatan'];
+
+    // var message2 = response.statusCode;
+    // print(message2);
+
     return response.statusCode == 200;
   }
 
@@ -63,7 +69,7 @@ class _selamatdatangState extends State<selamatdatang> {
     HttpOverrides.global = MyHttpOverrides();
 
     // SERVER LOGIN API URL
-    var url = 'http://10.10.0.167/1.%20KULIAH/MOP-Green/register.php';
+    var url = 'http://10.10.7.136/1.%20KULIAH/MOP-Green/register.php';
     //  Uri.parse(url);
 
     // Store all data with Param Name.

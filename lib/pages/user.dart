@@ -17,7 +17,7 @@ class _userPageState extends State<userPage> {
       body: Column(
         children: [
           Container(
-            width: 414,
+            width: double.infinity,
             height: 200,
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
@@ -77,7 +77,7 @@ class _userPageState extends State<userPage> {
                           size: 35,
                         ),
                         title: const Text(
-                          "Map Greenhouse",
+                          "Peta Greenhouse",
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         // subtitle: Text("Ketuk Untuk Membuka"),
@@ -90,6 +90,14 @@ class _userPageState extends State<userPage> {
                             Icon(Icons.arrow_forward_ios_outlined),
                           ],
                         ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const mapPage(),
+                            ),
+                          );
+                        },
                       ),
                       const Divider(color: Colors.black26),
                       ListTile(
@@ -99,7 +107,7 @@ class _userPageState extends State<userPage> {
                           size: 35,
                         ),
                         title: const Text(
-                          "About",
+                          "Tentang Kami",
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         trailing: Row(
@@ -111,17 +119,40 @@ class _userPageState extends State<userPage> {
                             Icon(Icons.arrow_forward_ios_outlined),
                           ],
                         ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const aboutUs(),
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),
                 ),
-                // Divider(
-                //   color: Colors.black,
-                // ),
-
-                // Divider(
-                //   color: Colors.black,
-                // ),
+                Card(
+                  child: ListTile(
+                    dense: true,
+                    leading: const Icon(
+                      Icons.delete_forever_rounded,
+                      color: Colors.red,
+                      size: 35,
+                    ),
+                    title: const Text(
+                      "Hapus Akun",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                          color: Colors.red),
+                    ),
+                    trailing: const Icon(Icons.warning_amber_rounded,
+                        color: Colors.red),
+                    onTap: () {
+                      openDialog();
+                    },
+                  ),
+                ),
                 Card(
                   child: ListTile(
                     dense: true,
@@ -130,24 +161,16 @@ class _userPageState extends State<userPage> {
                       size: 35,
                     ),
                     title: const Text(
-                      "Log Out",
+                      "Keluar",
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
                     ),
-                    trailing: const Icon(Icons.arrow_forward_ios_outlined),
+                    // trailing: const Icon(Icons.arrow_forward_ios_outlined),
                     onTap: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const selamatdatang(),
-                        ),
-                      );
+                      deleteDialog();
                     },
                   ),
                 ),
-                // Divider(
-                //   color: Colors.black,
-                // ),
               ],
             ),
           ),
@@ -155,4 +178,68 @@ class _userPageState extends State<userPage> {
       ),
     );
   }
+
+  //! ini ui alertdialog
+  Future openDialog() => showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+            title: const Text('Warning'),
+            content: const Text('Apakah Anda Yakin Ingin Menghapus Akun ?'),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    setState(() {
+                      Navigator.pop(context);
+                    });
+                  },
+                  child: const Text('Batal',
+                      style: TextStyle(color: Colors.grey, fontSize: 14))),
+              TextButton(
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const selamatdatang(),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    "Yakin",
+                    style: buttonStyle.copyWith(fontSize: 14),
+                  )),
+            ],
+          ));
+  Future deleteDialog() => showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+            title: const Text('Warning'),
+            content: const Text('Apakah Anda Yakin Ingin Keluar ?'),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    setState(() {
+                      Navigator.pop(context);
+                    });
+                  },
+                  child: const Text('Batal',
+                      style: TextStyle(color: Colors.grey, fontSize: 14))),
+              TextButton(
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const selamatdatang(),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    "Yakin",
+                    style: buttonStyle.copyWith(fontSize: 14),
+                  )),
+            ],
+          ));
 }
