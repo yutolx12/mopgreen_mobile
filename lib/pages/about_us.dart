@@ -55,14 +55,14 @@ class aboutUs extends StatelessWidget {
                     height: 5,
                   ),
                   const Text(
-                    "David Arrozaqi",
+                    "Akbar Ramadhani Firdaus",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
                     height: 5,
                   ),
                   const Text(
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially. ",
+                    "Project Leader, Web Programmer",
                     style: TextStyle(
                       fontSize: 11,
                     ),
@@ -96,7 +96,7 @@ class aboutUs extends StatelessWidget {
                     height: 5,
                   ),
                   const Text(
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially. ",
+                    "Mobile Programmer, UI/UX Designer",
                     style: TextStyle(
                       fontSize: 11,
                     ),
@@ -123,14 +123,14 @@ class aboutUs extends StatelessWidget {
                     height: 5,
                   ),
                   const Text(
-                    "David Arrozaqi",
+                    "Khofifah Ainurrohmah",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
                     height: 5,
                   ),
                   const Text(
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially. ",
+                    "Mobile Programmer, Software Quality Assurance",
                     style: TextStyle(
                       fontSize: 11,
                     ),
@@ -157,14 +157,14 @@ class aboutUs extends StatelessWidget {
                     height: 5,
                   ),
                   const Text(
-                    "David Arrozaqi",
+                    "Restu Fahimuroif",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
                     height: 5,
                   ),
                   const Text(
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially. ",
+                    "Embeded System, System Analyst, Software and Hardware Integration",
                     style: TextStyle(
                       fontSize: 11,
                     ),
@@ -191,14 +191,14 @@ class aboutUs extends StatelessWidget {
                     height: 5,
                   ),
                   const Text(
-                    "David Arrozaqi",
+                    "Yunanta Dwi Kristanto",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
                     height: 5,
                   ),
                   const Text(
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially. ",
+                    "Server Administrator, Web Programmer, Mobile Programmer, UI/UX Designer",
                     style: TextStyle(
                       fontSize: 11,
                     ),

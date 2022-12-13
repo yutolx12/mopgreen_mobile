@@ -19,8 +19,10 @@ class selamatdatang extends StatefulWidget {
 }
 
 class _selamatdatangState extends State<selamatdatang> {
+  // SharedPreferences? preferences;
   bool _isHiddenPassword = true;
   bool _isHiddenConfrimPassword = true;
+  // final key = GlobalKey<_selamatdatangState>();
 
   final namadepanController = TextEditingController();
   final namabelakangController = TextEditingController();
@@ -31,13 +33,40 @@ class _selamatdatangState extends State<selamatdatang> {
 
   final regisemailController = TextEditingController();
   final regispasswordController = TextEditingController();
-// Function login
 
-  Future userLogin(String email, String password) async {
+  // String get namadepan => _namadepan;
+
+  // String get namabelakang => _namabelakang;
+
+// get data from login
+  // Future<void> initializePreference() async {
+  //   this.preferences = await SharedPreferences.getInstance();
+  // }
+
+// Future<void> setIntoSharedPreferences() async {
+//     SharedPreferences prefs = await SharedPreferences.getInstance();
+//     await prefs.setString("namadepan", _namadepan);
+//     await prefs.setString("namabelakang", _namabelakang);
+//   }
+
+//   Future<void> getFromSharedPreferences() async {
+//     SharedPreferences prefs = await SharedPreferences.getInstance();
+//     setState(() {
+//       _namadepan = prefs.getString("email");
+//       _namabelakang = prefs.getString("password");
+//     });
+//   }
+
+// Function login
+  // ignore: dead_code
+  Future userLogin(
+    String email,
+    String password,
+  ) async {
     HttpOverrides.global = MyHttpOverrides();
 
     // SERVER LOGIN API URL
-    var url = 'http://10.10.7.136/1.%20KULIAH/MOP-Green/login.php';
+    var url = 'http://10.10.172.60/1.%20KULIAH/MOP-Green/login.php';
     //  Uri.parse(url);
 
     // Store all data with Param Name.
@@ -59,6 +88,8 @@ class _selamatdatangState extends State<selamatdatang> {
 
     // var message2 = response.statusCode;
     // print(message2);
+    // return namadepan;
+    // return namabelakang;
 
     return response.statusCode == 200;
   }
@@ -69,7 +100,7 @@ class _selamatdatangState extends State<selamatdatang> {
     HttpOverrides.global = MyHttpOverrides();
 
     // SERVER LOGIN API URL
-    var url = 'http://10.10.7.136/1.%20KULIAH/MOP-Green/register.php';
+    var url = 'http://10.10.172.60/1.%20KULIAH/MOP-Green/register.php';
     //  Uri.parse(url);
 
     // Store all data with Param Name.

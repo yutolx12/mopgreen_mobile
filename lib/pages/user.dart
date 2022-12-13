@@ -47,7 +47,7 @@ class _userPageState extends State<userPage> {
                   ),
                 ),
                 title: Text(
-                  "Yunanta Dwi Kristanto",
+                  "Nama User",
                   style: wikwokTextStyle.copyWith(
                       fontWeight: FontWeight.bold, color: Colors.black),
                 ),
