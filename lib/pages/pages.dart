@@ -35,12 +35,13 @@ import '../chartLogview/chart1log.dart';
 import '../chartLogview/chart2log.dart';
 import '../chartLogview/chart3log.dart';
 import '../chartLogview/chart4log.dart';
+import '../modal/modal.dart';
 
 // import 'package:mqtt_client/mqtt_client.dart';
 
 // import 'package:mqtt_client/mqtt_client.dart';
 
-part 'selamatdatang_pages.dart';
+part 'selamatdatang_pagesbackup.dart';
 part 'dashboard.dart';
 part 'log_view.dart';
 part 'user.dart';
@@ -48,3 +49,4 @@ part 'navigasi.dart';
 part 'profil.dart';
 part 'about_us.dart';
 part 'map.dart';
+part 'selamatdatang_pages.dart';

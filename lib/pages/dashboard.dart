@@ -292,13 +292,13 @@ class _dashboardState extends State<dashboard> {
     });
   }
 
-  int dropdownIndex = 0;
-  List data = [
-    const room1(),
-    const room2(),
-    const room3(),
-    const room4(),
-  ];
+  // int dropdownIndex = 0;
+  // List data = [
+  //   const room1(),
+  //   const room2(),
+  //   const room3(),
+  //   const room4(),
+  // ];
 
   @override
   void dispose() {
@@ -365,699 +365,730 @@ class _dashboardState extends State<dashboard> {
   //!Body
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFF1F2F4),
-      body: Column(
-        children: [
-          Container(
-            width: 414,
-            height: 363,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(20),
-                  bottomLeft: Radius.circular(20)),
-              gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [Color(0xFF16D682), Color(0xFF05BE5E)]),
-            ),
-            child: Container(
-              margin: const EdgeInsets.all(10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  Text(
-                    'Room 1',
-                    style: selamatdatangTextStyle.copyWith(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  //!Grafik Suhu
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Column(
-                          children: [
-                            Column(
-                              children: [
-                                SizedBox(
-                                  width: 121,
-                                  height: 121,
-                                  child: SfRadialGauge(
-                                    axes: <RadialAxis>[
-                                      RadialAxis(
-                                        axisLineStyle: const AxisLineStyle(
-                                          thickness: 0.2,
-                                          thicknessUnit: GaugeSizeUnit.factor,
-                                          cornerStyle: CornerStyle.bothCurve,
-                                        ),
-                                        showTicks: false,
-                                        showLabels: false,
-                                        onAxisTapped: (value) {},
-                                        pointers: <GaugePointer>[
-                                          RangePointer(
-                                            color: Colors.white,
-                                            value: suhu.toDouble(),
-                                            onValueChanged: (value) {},
-                                            cornerStyle: CornerStyle.bothCurve,
-                                            onValueChangeEnd: (value) {},
-                                            onValueChangeStart: (value) {},
-                                            enableDragging: true,
-                                            width: 0.2,
-                                            sizeUnit: GaugeSizeUnit.factor,
-                                          ),
-                                        ],
-                                        annotations: <GaugeAnnotation>[
-                                          GaugeAnnotation(
-                                            widget: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Text(
-                                                  suhu.toString(),
-                                                  style: wikwokTextStyle,
-                                                ),
-                                                Text(
-                                                  "suhu",
-                                                  style: meTextStyle,
-                                                )
-                                              ],
-                                            ),
-                                            positionFactor: 0.13,
-                                            angle: 0.5,
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  "Rata-rata Suhu",
-                                  style: meTextStyle,
-                                ),
-                                Text(
-                                  "23",
-                                  style: wikwokTextStyle,
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  "Suhu Tertinggi",
-                                  style: meTextStyle,
-                                ),
-                                Text(
-                                  "28",
-                                  style: wikwokTextStyle,
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  "Suhu Terendah",
-                                  style: meTextStyle,
-                                ),
-                                Text(
-                                  "21",
-                                  style: wikwokTextStyle,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      //! Grafik Kelembapan
-                      Expanded(
-                        child: Column(
-                          children: [
-                            Column(
-                              children: [
-                                SizedBox(
-                                  width: 121,
-                                  height: 121,
-                                  child: SfRadialGauge(
-                                    axes: <RadialAxis>[
-                                      RadialAxis(
-                                        axisLineStyle: const AxisLineStyle(
-                                          thickness: 0.2,
-                                          thicknessUnit: GaugeSizeUnit.factor,
-                                          cornerStyle: CornerStyle.bothCurve,
-                                        ),
-                                        showTicks: false,
-                                        showLabels: false,
-                                        onAxisTapped: (value) {},
-                                        pointers: <GaugePointer>[
-                                          RangePointer(
-                                            color: Colors.white,
-                                            value: kelembapan.toDouble(),
-                                            onValueChanged: (value) {},
-                                            cornerStyle: CornerStyle.bothCurve,
-                                            onValueChangeEnd: (value) {},
-                                            onValueChangeStart: (value) {},
-                                            enableDragging: true,
-                                            width: 0.2,
-                                            sizeUnit: GaugeSizeUnit.factor,
-                                          ),
-                                        ],
-                                        annotations: <GaugeAnnotation>[
-                                          GaugeAnnotation(
-                                            widget: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Text(
-                                                  kelembapan.toString(),
-                                                  style: wikwokTextStyle,
-                                                ),
-                                                Text(
-                                                  "Kelembapan",
-                                                  style: meTextStyle.copyWith(
-                                                      fontSize: 12),
-                                                ),
-                                              ],
-                                            ),
-                                            positionFactor: 0.13,
-                                            angle: 0.5,
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  "Rata-rata Kelembapan",
-                                  style: meTextStyle,
-                                ),
-                                Text(
-                                  "68",
-                                  style: wikwokTextStyle,
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  "Kelembapan Tertinggi",
-                                  style: meTextStyle,
-                                ),
-                                Text(
-                                  "74",
-                                  style: wikwokTextStyle,
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  "Kelembapan Terendah",
-                                  style: meTextStyle,
-                                ),
-                                Text(
-                                  "65",
-                                  style: wikwokTextStyle,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+    return WillPopScope(
+      onWillPop: showExitPopup,
+      child: Scaffold(
+        backgroundColor: const Color(0xFFF1F2F4),
+        body: Column(
+          children: [
+            Container(
+              width: 414,
+              height: 363,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(20),
+                    bottomLeft: Radius.circular(20)),
+                gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [Color(0xFF16D682), Color(0xFF05BE5E)]),
               ),
-            ),
-          ),
-          Expanded(
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 3),
+              child: Container(
+                margin: const EdgeInsets.all(10),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const SizedBox(
-                      height: 10,
+                      height: 30,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 90),
-                      child: Card(
-                        child: DropdownSearch<dynamic>(
-                          popupProps: const PopupProps.menu(
-                            fit: FlexFit.loose,
-                          ),
-                          items: const [
-                            "Room chart 1",
-                            "Room chart 2",
-                            "Room chart 3",
-                            "Room chart 4"
-                          ],
-                          dropdownDecoratorProps: const DropDownDecoratorProps(
-                            dropdownSearchDecoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(10),
-                              labelText: "Pilih Room",
-                            ),
-                          ),
-                          onChanged: (o) {
-                            setState(() {
-                              switch (o) {
-                                case "Room chart 1":
-                                  dropdownIndex = 0;
-                                  break;
-                                case "Room chart 2":
-                                  dropdownIndex = 1;
-                                  break;
-                                case "Room chart 3":
-                                  dropdownIndex = 2;
-                                  break;
-                                case "Room chart 4":
-                                  dropdownIndex = 3;
-                                  break;
-                                default:
-                                  dropdownIndex = 0;
-                                  break;
-                              }
-                            });
-                          },
-                          selectedItem: data[dropdownIndex],
-                        ),
+                    Text(
+                      'Room 1',
+                      style: selamatdatangTextStyle.copyWith(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                     const SizedBox(
                       height: 10,
                     ),
-                    data[dropdownIndex],
+                    //!Grafik Suhu
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            children: [
+                              Column(
+                                children: [
+                                  SizedBox(
+                                    width: 121,
+                                    height: 121,
+                                    child: SfRadialGauge(
+                                      axes: <RadialAxis>[
+                                        RadialAxis(
+                                          axisLineStyle: const AxisLineStyle(
+                                            thickness: 0.2,
+                                            thicknessUnit: GaugeSizeUnit.factor,
+                                            cornerStyle: CornerStyle.bothCurve,
+                                          ),
+                                          showTicks: false,
+                                          showLabels: false,
+                                          onAxisTapped: (value) {},
+                                          pointers: <GaugePointer>[
+                                            RangePointer(
+                                              color: Colors.white,
+                                              value: suhu.toDouble(),
+                                              onValueChanged: (value) {},
+                                              cornerStyle:
+                                                  CornerStyle.bothCurve,
+                                              onValueChangeEnd: (value) {},
+                                              onValueChangeStart: (value) {},
+                                              enableDragging: true,
+                                              width: 0.2,
+                                              sizeUnit: GaugeSizeUnit.factor,
+                                            ),
+                                          ],
+                                          annotations: <GaugeAnnotation>[
+                                            GaugeAnnotation(
+                                              widget: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    suhu.toString(),
+                                                    style: wikwokTextStyle,
+                                                  ),
+                                                  Text(
+                                                    "suhu",
+                                                    style: meTextStyle,
+                                                  )
+                                                ],
+                                              ),
+                                              positionFactor: 0.13,
+                                              angle: 0.5,
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    "Rata-rata Suhu",
+                                    style: meTextStyle,
+                                  ),
+                                  Text(
+                                    "23",
+                                    style: wikwokTextStyle,
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    "Suhu Tertinggi",
+                                    style: meTextStyle,
+                                  ),
+                                  Text(
+                                    "28",
+                                    style: wikwokTextStyle,
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    "Suhu Terendah",
+                                    style: meTextStyle,
+                                  ),
+                                  Text(
+                                    "21",
+                                    style: wikwokTextStyle,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        //! Grafik Kelembapan
+                        Expanded(
+                          child: Column(
+                            children: [
+                              Column(
+                                children: [
+                                  SizedBox(
+                                    width: 121,
+                                    height: 121,
+                                    child: SfRadialGauge(
+                                      axes: <RadialAxis>[
+                                        RadialAxis(
+                                          axisLineStyle: const AxisLineStyle(
+                                            thickness: 0.2,
+                                            thicknessUnit: GaugeSizeUnit.factor,
+                                            cornerStyle: CornerStyle.bothCurve,
+                                          ),
+                                          showTicks: false,
+                                          showLabels: false,
+                                          onAxisTapped: (value) {},
+                                          pointers: <GaugePointer>[
+                                            RangePointer(
+                                              color: Colors.white,
+                                              value: kelembapan.toDouble(),
+                                              onValueChanged: (value) {},
+                                              cornerStyle:
+                                                  CornerStyle.bothCurve,
+                                              onValueChangeEnd: (value) {},
+                                              onValueChangeStart: (value) {},
+                                              enableDragging: true,
+                                              width: 0.2,
+                                              sizeUnit: GaugeSizeUnit.factor,
+                                            ),
+                                          ],
+                                          annotations: <GaugeAnnotation>[
+                                            GaugeAnnotation(
+                                              widget: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    kelembapan.toString(),
+                                                    style: wikwokTextStyle,
+                                                  ),
+                                                  Text(
+                                                    "Kelembapan",
+                                                    style: meTextStyle.copyWith(
+                                                        fontSize: 12),
+                                                  ),
+                                                ],
+                                              ),
+                                              positionFactor: 0.13,
+                                              angle: 0.5,
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    "Rata-rata Kelembapan",
+                                    style: meTextStyle,
+                                  ),
+                                  Text(
+                                    "68",
+                                    style: wikwokTextStyle,
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    "Kelembapan Tertinggi",
+                                    style: meTextStyle,
+                                  ),
+                                  Text(
+                                    "74",
+                                    style: wikwokTextStyle,
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    "Kelembapan Terendah",
+                                    style: meTextStyle,
+                                  ),
+                                  Text(
+                                    "65",
+                                    style: wikwokTextStyle,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
             ),
-          ),
-          // SizedBox(
-          //   height: 19,
-          // ),
-          //!Scrollview
-          // Expanded(
-          //   child: SingleChildScrollView(
-          //     child: Padding(
-          //       padding: const EdgeInsets.symmetric(horizontal: 3),
-          //       child: Column(
-          //         children: [
-          //           //!Chart Room 1
-          //           // Card(
-          //           //   child: Container(
-          //           //     width: double.infinity,
-          //           //     height: 327,
-          //           //     color: Colors.white,
-          //           //     child: Column(
-          //           //       children: [
-          //           //         Padding(
-          //           //           padding: const EdgeInsets.all(5),
-          //           //           child: Row(
-          //           //             mainAxisAlignment: MainAxisAlignment.start,
-          //           //             children: [
-          //           //               Text(
-          //           //                 'Room 1',
-          //           //                 style: meTextStyle.copyWith(
-          //           //                   color: Colors.black,
-          //           //                 ),
-          //           //               ),
-          //           //               const Spacer(),
-          //           //               Image.asset('assets/images/divider.png'),
-          //           //               const SizedBox(
-          //           //                 width: 10,
-          //           //               ),
-          //           //               Text(
-          //           //                 'Suhu',
-          //           //                 style: meTextStyle.copyWith(
-          //           //                   color: Colors.black,
-          //           //                 ),
-          //           //               ),
-          //           //               const SizedBox(
-          //           //                 width: 10,
-          //           //               ),
-          //           //               Image.asset('assets/images/divider1.png'),
-          //           //               const SizedBox(
-          //           //                 width: 10,
-          //           //               ),
-          //           //               Text(
-          //           //                 'Kelembapan',
-          //           //                 style: meTextStyle.copyWith(
-          //           //                   color: Colors.black,
-          //           //                 ),
-          //           //               ),
-          //           //             ],
-          //           //           ),
-          //           //         ),
-          //           //         //*Ini Kodingan Chartnya
-          //           //         // chart.SfCartesianChart(
-          //           //         //   series: <chart.LineSeries<LiveData, int>>[
-          //           //         //     chart.LineSeries<LiveData, int>(
-          //           //         //         onRendererCreated:
-          //           //         //             (chart.ChartSeriesController
-          //           //         //                 controller) {
-          //           //         //           _chartSeriesController = controller;
-          //           //         //         },
-          //           //         //         dataSource: chartData,
-          //           //         //         color: Colors.blue,
-          //           //         //         xValueMapper: (LiveData sales, _) =>
-          //           //         //             sales.time,
-          //           //         //         yValueMapper: (LiveData sales, _) =>
-          //           //         //             sales.speed),
-          //           //         //     chart.LineSeries<LiveData, int>(
-          //           //         //         onRendererCreated:
-          //           //         //             (chart.ChartSeriesController
-          //           //         //                 controller) {
-          //           //         //           _chartSeriesController2 = controller;
-          //           //         //         },
-          //           //         //         dataSource: chartData2,
-          //           //         //         color: Colors.red,
-          //           //         //         xValueMapper: (LiveData sales, _) =>
-          //           //         //             sales.time,
-          //           //         //         yValueMapper: (LiveData sales, _) =>
-          //           //         //             sales.speed),
-          //           //         //   ],
-          //           //         //   primaryXAxis: chart.NumericAxis(
-          //           //         //       majorGridLines:
-          //           //         //           const chart.MajorGridLines(width: 0),
-          //           //         //       edgeLabelPlacement:
-          //           //         //           chart.EdgeLabelPlacement.shift,
-          //           //         //       interval: 1,
-          //           //         //       title:
-          //           //         //           chart.AxisTitle(text: 'time(seconds)')),
-          //           //         //   primaryYAxis: chart.NumericAxis(
-          //           //         //     axisLine: const chart.AxisLine(width: 0),
-          //           //         //     majorTickLines:
-          //           //         //         const chart.MajorTickLines(size: 0),
-          //           //         //   ),
-          //           //         // ),
-          //           //       ],
-          //           //     ),
-          //           //   ),
-          //           // ),
-          //           const SizedBox(
-          //             height: 5,
-          //           ),
-          //           //*Chart Room 2
-          //           // Card(
-          //           //   child: Container(
-          //           //     width: double.infinity,
-          //           //     height: 327,
-          //           //     color: Colors.white,
-          //           //     child: Column(
-          //           //       children: [
-          //           //         Padding(
-          //           //           padding: const EdgeInsets.all(5),
-          //           //           child: Row(
-          //           //             mainAxisAlignment: MainAxisAlignment.start,
-          //           //             children: [
-          //           //               Text(
-          //           //                 'Room 2',
-          //           //                 style: meTextStyle.copyWith(
-          //           //                   color: Colors.black,
-          //           //                 ),
-          //           //               ),
-          //           //               const Spacer(),
-          //           //               Image.asset('assets/images/divider.png'),
-          //           //               const SizedBox(
-          //           //                 width: 10,
-          //           //               ),
-          //           //               Text(
-          //           //                 'Suhu',
-          //           //                 style: meTextStyle.copyWith(
-          //           //                   color: Colors.black,
-          //           //                 ),
-          //           //               ),
-          //           //               const SizedBox(
-          //           //                 width: 10,
-          //           //               ),
-          //           //               Image.asset('assets/images/divider1.png'),
-          //           //               const SizedBox(
-          //           //                 width: 10,
-          //           //               ),
-          //           //               Text(
-          //           //                 'Kelembapan',
-          //           //                 style: meTextStyle.copyWith(
-          //           //                   color: Colors.black,
-          //           //                 ),
-          //           //               ),
-          //           //             ],
-          //           //           ),
-          //           //         ),
-          //           //         //!Ini Kodingan Chartnya
-          //           //         // chart.SfCartesianChart(
-          //           //         //   series: <chart.LineSeries<LiveData, int>>[
-          //           //         //     chart.LineSeries<LiveData, int>(
-          //           //         //         onRendererCreated:
-          //           //         //             (chart.ChartSeriesController
-          //           //         //                 controller) {
-          //           //         //           _chartSeriesController3 = controller;
-          //           //         //         },
-          //           //         //         dataSource: chartData3,
-          //           //         //         color: Colors.blue,
-          //           //         //         xValueMapper: (LiveData sales, _) =>
-          //           //         //             sales.time,
-          //           //         //         yValueMapper: (LiveData sales, _) =>
-          //           //         //             sales.speed),
-          //           //         //     chart.LineSeries<LiveData, int>(
-          //           //         //         onRendererCreated:
-          //           //         //             (chart.ChartSeriesController
-          //           //         //                 controller) {
-          //           //         //           _chartSeriesController4 = controller;
-          //           //         //         },
-          //           //         //         dataSource: chartData4,
-          //           //         //         color: Colors.red,
-          //           //         //         xValueMapper: (LiveData sales, _) =>
-          //           //         //             sales.time,
-          //           //         //         yValueMapper: (LiveData sales, _) =>
-          //           //         //             sales.speed),
-          //           //         //   ],
-          //           //         //   primaryXAxis: chart.NumericAxis(
-          //           //         //       majorGridLines:
-          //           //         //           const chart.MajorGridLines(width: 0),
-          //           //         //       edgeLabelPlacement:
-          //           //         //           chart.EdgeLabelPlacement.shift,
-          //           //         //       interval: 1,
-          //           //         //       title:
-          //           //         //           chart.AxisTitle(text: 'time(seconds)')),
-          //           //         //   primaryYAxis: chart.NumericAxis(
-          //           //         //     axisLine: const chart.AxisLine(width: 0),
-          //           //         //     majorTickLines:
-          //           //         //         const chart.MajorTickLines(size: 0),
-          //           //         //   ),
-          //           //         // ),
-          //           //       ],
-          //           //     ),
-          //           //   ),
-          //           // ),
-          //           const SizedBox(
-          //             height: 5,
-          //           ),
-          //           //*Chart Room 3
-          //           // Card(
-          //           //   child: Container(
-          //           //     width: double.infinity,
-          //           //     height: 327,
-          //           //     color: Colors.white,
-          //           //     child: Column(
-          //           //       children: [
-          //           //         Padding(
-          //           //           padding: const EdgeInsets.all(5),
-          //           //           child: Row(
-          //           //             mainAxisAlignment: MainAxisAlignment.start,
-          //           //             children: [
-          //           //               Text(
-          //           //                 'Room 3',
-          //           //                 style: meTextStyle.copyWith(
-          //           //                   color: Colors.black,
-          //           //                 ),
-          //           //               ),
-          //           //               const Spacer(),
-          //           //               Image.asset('assets/images/divider.png'),
-          //           //               const SizedBox(
-          //           //                 width: 10,
-          //           //               ),
-          //           //               Text(
-          //           //                 'Suhu',
-          //           //                 style: meTextStyle.copyWith(
-          //           //                   color: Colors.black,
-          //           //                 ),
-          //           //               ),
-          //           //               const SizedBox(
-          //           //                 width: 10,
-          //           //               ),
-          //           //               Image.asset('assets/images/divider1.png'),
-          //           //               const SizedBox(
-          //           //                 width: 10,
-          //           //               ),
-          //           //               Text(
-          //           //                 'Kelembapan',
-          //           //                 style: meTextStyle.copyWith(
-          //           //                   color: Colors.black,
-          //           //                 ),
-          //           //               ),
-          //           //             ],
-          //           //           ),
-          //           //         ),
-          //           //         //!Ini kodingan chartnya
-          //           //         // chart.SfCartesianChart(
-          //           //         //   series: <chart.LineSeries<LiveData, int>>[
-          //           //         //     chart.LineSeries<LiveData, int>(
-          //           //         //         onRendererCreated:
-          //           //         //             (chart.ChartSeriesController
-          //           //         //                 controller) {
-          //           //         //           _chartSeriesController5 = controller;
-          //           //         //         },
-          //           //         //         dataSource: chartData5,
-          //           //         //         color: Colors.blue,
-          //           //         //         xValueMapper: (LiveData sales, _) =>
-          //           //         //             sales.time,
-          //           //         //         yValueMapper: (LiveData sales, _) =>
-          //           //         //             sales.speed),
-          //           //         //     chart.LineSeries<LiveData, int>(
-          //           //         //         onRendererCreated:
-          //           //         //             (chart.ChartSeriesController
-          //           //         //                 controller) {
-          //           //         //           _chartSeriesController6 = controller;
-          //           //         //         },
-          //           //         //         dataSource: chartData6,
-          //           //         //         color: Colors.red,
-          //           //         //         xValueMapper: (LiveData sales, _) =>
-          //           //         //             sales.time,
-          //           //         //         yValueMapper: (LiveData sales, _) =>
-          //           //         //             sales.speed),
-          //           //         //   ],
-          //           //         //   primaryXAxis: chart.NumericAxis(
-          //           //         //       majorGridLines:
-          //           //         //           const chart.MajorGridLines(width: 0),
-          //           //         //       edgeLabelPlacement:
-          //           //         //           chart.EdgeLabelPlacement.shift,
-          //           //         //       interval: 1,
-          //           //         //       title:
-          //           //         //           chart.AxisTitle(text: 'time(seconds)')),
-          //           //         //   primaryYAxis: chart.NumericAxis(
-          //           //         //     axisLine: const chart.AxisLine(width: 0),
-          //           //         //     majorTickLines:
-          //           //         //         const chart.MajorTickLines(size: 0),
-          //           //         //   ),
-          //           //         // ),
-          //           //       ],
-          //           //     ),
-          //           //   ),
-          //           // ),
-          //           const SizedBox(
-          //             height: 5,
-          //           ),
-          //           //*chart room 4
-          //           // Card(
-          //           //   child: Container(
-          //           //     width: double.infinity,
-          //           //     height: 327,
-          //           //     color: Colors.white,
-          //           //     child: Column(
-          //           //       children: [
-          //           //         Padding(
-          //           //           padding: const EdgeInsets.all(5),
-          //           //           child: Row(
-          //           //             mainAxisAlignment: MainAxisAlignment.start,
-          //           //             children: [
-          //           //               Text(
-          //           //                 'Room 4',
-          //           //                 style: meTextStyle.copyWith(
-          //           //                   color: Colors.black,
-          //           //                 ),
-          //           //               ),
-          //           //               const Spacer(),
-          //           //               Image.asset('assets/images/divider.png'),
-          //           //               const SizedBox(
-          //           //                 width: 10,
-          //           //               ),
-          //           //               Text(
-          //           //                 'Suhu',
-          //           //                 style: meTextStyle.copyWith(
-          //           //                   color: Colors.black,
-          //           //                 ),
-          //           //               ),
-          //           //               const SizedBox(
-          //           //                 width: 10,
-          //           //               ),
-          //           //               Image.asset('assets/images/divider1.png'),
-          //           //               const SizedBox(
-          //           //                 width: 10,
-          //           //               ),
-          //           //               Text(
-          //           //                 'Kelembapan',
-          //           //                 style: meTextStyle.copyWith(
-          //           //                   color: Colors.black,
-          //           //                 ),
-          //           //               ),
-          //           //             ],
-          //           //           ),
-          //           //         ),
-          //           //         //!Ini kodingan chartnya
-          //           //         // chart.SfCartesianChart(
-          //           //         //   series: <chart.LineSeries<LiveData, int>>[
-          //           //         //     chart.LineSeries<LiveData, int>(
-          //           //         //         onRendererCreated:
-          //           //         //             (chart.ChartSeriesController
-          //           //         //                 controller) {
-          //           //         //           _chartSeriesController7 = controller;
-          //           //         //         },
-          //           //         //         dataSource: chartData7,
-          //           //         //         color: Colors.blue,
-          //           //         //         xValueMapper: (LiveData sales, _) =>
-          //           //         //             sales.time,
-          //           //         //         yValueMapper: (LiveData sales, _) =>
-          //           //         //             sales.speed),
-          //           //         //     chart.LineSeries<LiveData, int>(
-          //           //         //         onRendererCreated:
-          //           //         //             (chart.ChartSeriesController
-          //           //         //                 controller) {
-          //           //         //           _chartSeriesController8 = controller;
-          //           //         //         },
-          //           //         //         dataSource: chartData8,
-          //           //         //         color: Colors.red,
-          //           //         //         xValueMapper: (LiveData sales, _) =>
-          //           //         //             sales.time,
-          //           //         //         yValueMapper: (LiveData sales, _) =>
-          //           //         //             sales.speed),
-          //           //         //   ],
-          //           //         //   primaryXAxis: chart.NumericAxis(
-          //           //         //       majorGridLines:
-          //           //         //           const chart.MajorGridLines(width: 0),
-          //           //         //       edgeLabelPlacement:
-          //           //         //           chart.EdgeLabelPlacement.shift,
-          //           //         //       interval: 1,
-          //           //         //       title:
-          //           //         //           chart.AxisTitle(text: 'time(seconds)')),
-          //           //         //   primaryYAxis: chart.NumericAxis(
-          //           //         //     axisLine: const chart.AxisLine(width: 0),
-          //           //         //     majorTickLines:
-          //           //         //         const chart.MajorTickLines(size: 0),
-          //           //         //   ),
-          //           //         // ),
-          //           //       ],
-          //           //     ),
-          //           //   ),
-          //           // ),
-          //           const SizedBox(
-          //             height: 30,
-          //           )
-          //         ],
-          //       ),
-          //     ),
-          //   ),
-          // ),
-        ],
+            Expanded(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 3),
+                  child: Column(
+                    children: [
+                      room1()
+                      // const SizedBox(
+                      //   height: 10,
+                      // ),
+                      // Padding(
+                      //   padding: const EdgeInsets.symmetric(horizontal: 90),
+                      //   child: Card(
+                      //     child: DropdownSearch<dynamic>(
+                      //       popupProps: const PopupProps.menu(
+                      //         fit: FlexFit.loose,
+                      //       ),
+                      //       items: const [
+                      //         "Room chart 1",
+                      //         "Room chart 2",
+                      //         "Room chart 3",
+                      //         "Room chart 4"
+                      //       ],
+                      //       dropdownDecoratorProps: const DropDownDecoratorProps(
+                      //         dropdownSearchDecoration: InputDecoration(
+                      //           contentPadding: EdgeInsets.all(10),
+                      //           labelText: "Pilih Room",
+                      //         ),
+                      //       ),
+                      //       onChanged: (o) {
+                      //         setState(() {
+                      //           switch (o) {
+                      //             case "Room chart 1":
+                      //               dropdownIndex = 0;
+                      //               break;
+                      //             case "Room chart 2":
+                      //               dropdownIndex = 1;
+                      //               break;
+                      //             case "Room chart 3":
+                      //               dropdownIndex = 2;
+                      //               break;
+                      //             case "Room chart 4":
+                      //               dropdownIndex = 3;
+                      //               break;
+                      //             default:
+                      //               dropdownIndex = 0;
+                      //               break;
+                      //           }
+                      //         });
+                      //       },
+                      //       selectedItem: data[dropdownIndex],
+                      //     ),
+                      //   ),
+                      // ),
+                      // const SizedBox(
+                      //   height: 10,
+                      // ),
+                      // data[dropdownIndex],
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            // SizedBox(
+            //   height: 19,
+            // ),
+            //!Scrollview
+            // Expanded(
+            //   child: SingleChildScrollView(
+            //     child: Padding(
+            //       padding: const EdgeInsets.symmetric(horizontal: 3),
+            //       child: Column(
+            //         children: [
+            //           //!Chart Room 1
+            //           // Card(
+            //           //   child: Container(
+            //           //     width: double.infinity,
+            //           //     height: 327,
+            //           //     color: Colors.white,
+            //           //     child: Column(
+            //           //       children: [
+            //           //         Padding(
+            //           //           padding: const EdgeInsets.all(5),
+            //           //           child: Row(
+            //           //             mainAxisAlignment: MainAxisAlignment.start,
+            //           //             children: [
+            //           //               Text(
+            //           //                 'Room 1',
+            //           //                 style: meTextStyle.copyWith(
+            //           //                   color: Colors.black,
+            //           //                 ),
+            //           //               ),
+            //           //               const Spacer(),
+            //           //               Image.asset('assets/images/divider.png'),
+            //           //               const SizedBox(
+            //           //                 width: 10,
+            //           //               ),
+            //           //               Text(
+            //           //                 'Suhu',
+            //           //                 style: meTextStyle.copyWith(
+            //           //                   color: Colors.black,
+            //           //                 ),
+            //           //               ),
+            //           //               const SizedBox(
+            //           //                 width: 10,
+            //           //               ),
+            //           //               Image.asset('assets/images/divider1.png'),
+            //           //               const SizedBox(
+            //           //                 width: 10,
+            //           //               ),
+            //           //               Text(
+            //           //                 'Kelembapan',
+            //           //                 style: meTextStyle.copyWith(
+            //           //                   color: Colors.black,
+            //           //                 ),
+            //           //               ),
+            //           //             ],
+            //           //           ),
+            //           //         ),
+            //           //         //*Ini Kodingan Chartnya
+            //           //         // chart.SfCartesianChart(
+            //           //         //   series: <chart.LineSeries<LiveData, int>>[
+            //           //         //     chart.LineSeries<LiveData, int>(
+            //           //         //         onRendererCreated:
+            //           //         //             (chart.ChartSeriesController
+            //           //         //                 controller) {
+            //           //         //           _chartSeriesController = controller;
+            //           //         //         },
+            //           //         //         dataSource: chartData,
+            //           //         //         color: Colors.blue,
+            //           //         //         xValueMapper: (LiveData sales, _) =>
+            //           //         //             sales.time,
+            //           //         //         yValueMapper: (LiveData sales, _) =>
+            //           //         //             sales.speed),
+            //           //         //     chart.LineSeries<LiveData, int>(
+            //           //         //         onRendererCreated:
+            //           //         //             (chart.ChartSeriesController
+            //           //         //                 controller) {
+            //           //         //           _chartSeriesController2 = controller;
+            //           //         //         },
+            //           //         //         dataSource: chartData2,
+            //           //         //         color: Colors.red,
+            //           //         //         xValueMapper: (LiveData sales, _) =>
+            //           //         //             sales.time,
+            //           //         //         yValueMapper: (LiveData sales, _) =>
+            //           //         //             sales.speed),
+            //           //         //   ],
+            //           //         //   primaryXAxis: chart.NumericAxis(
+            //           //         //       majorGridLines:
+            //           //         //           const chart.MajorGridLines(width: 0),
+            //           //         //       edgeLabelPlacement:
+            //           //         //           chart.EdgeLabelPlacement.shift,
+            //           //         //       interval: 1,
+            //           //         //       title:
+            //           //         //           chart.AxisTitle(text: 'time(seconds)')),
+            //           //         //   primaryYAxis: chart.NumericAxis(
+            //           //         //     axisLine: const chart.AxisLine(width: 0),
+            //           //         //     majorTickLines:
+            //           //         //         const chart.MajorTickLines(size: 0),
+            //           //         //   ),
+            //           //         // ),
+            //           //       ],
+            //           //     ),
+            //           //   ),
+            //           // ),
+            //           const SizedBox(
+            //             height: 5,
+            //           ),
+            //           //*Chart Room 2
+            //           // Card(
+            //           //   child: Container(
+            //           //     width: double.infinity,
+            //           //     height: 327,
+            //           //     color: Colors.white,
+            //           //     child: Column(
+            //           //       children: [
+            //           //         Padding(
+            //           //           padding: const EdgeInsets.all(5),
+            //           //           child: Row(
+            //           //             mainAxisAlignment: MainAxisAlignment.start,
+            //           //             children: [
+            //           //               Text(
+            //           //                 'Room 2',
+            //           //                 style: meTextStyle.copyWith(
+            //           //                   color: Colors.black,
+            //           //                 ),
+            //           //               ),
+            //           //               const Spacer(),
+            //           //               Image.asset('assets/images/divider.png'),
+            //           //               const SizedBox(
+            //           //                 width: 10,
+            //           //               ),
+            //           //               Text(
+            //           //                 'Suhu',
+            //           //                 style: meTextStyle.copyWith(
+            //           //                   color: Colors.black,
+            //           //                 ),
+            //           //               ),
+            //           //               const SizedBox(
+            //           //                 width: 10,
+            //           //               ),
+            //           //               Image.asset('assets/images/divider1.png'),
+            //           //               const SizedBox(
+            //           //                 width: 10,
+            //           //               ),
+            //           //               Text(
+            //           //                 'Kelembapan',
+            //           //                 style: meTextStyle.copyWith(
+            //           //                   color: Colors.black,
+            //           //                 ),
+            //           //               ),
+            //           //             ],
+            //           //           ),
+            //           //         ),
+            //           //         //!Ini Kodingan Chartnya
+            //           //         // chart.SfCartesianChart(
+            //           //         //   series: <chart.LineSeries<LiveData, int>>[
+            //           //         //     chart.LineSeries<LiveData, int>(
+            //           //         //         onRendererCreated:
+            //           //         //             (chart.ChartSeriesController
+            //           //         //                 controller) {
+            //           //         //           _chartSeriesController3 = controller;
+            //           //         //         },
+            //           //         //         dataSource: chartData3,
+            //           //         //         color: Colors.blue,
+            //           //         //         xValueMapper: (LiveData sales, _) =>
+            //           //         //             sales.time,
+            //           //         //         yValueMapper: (LiveData sales, _) =>
+            //           //         //             sales.speed),
+            //           //         //     chart.LineSeries<LiveData, int>(
+            //           //         //         onRendererCreated:
+            //           //         //             (chart.ChartSeriesController
+            //           //         //                 controller) {
+            //           //         //           _chartSeriesController4 = controller;
+            //           //         //         },
+            //           //         //         dataSource: chartData4,
+            //           //         //         color: Colors.red,
+            //           //         //         xValueMapper: (LiveData sales, _) =>
+            //           //         //             sales.time,
+            //           //         //         yValueMapper: (LiveData sales, _) =>
+            //           //         //             sales.speed),
+            //           //         //   ],
+            //           //         //   primaryXAxis: chart.NumericAxis(
+            //           //         //       majorGridLines:
+            //           //         //           const chart.MajorGridLines(width: 0),
+            //           //         //       edgeLabelPlacement:
+            //           //         //           chart.EdgeLabelPlacement.shift,
+            //           //         //       interval: 1,
+            //           //         //       title:
+            //           //         //           chart.AxisTitle(text: 'time(seconds)')),
+            //           //         //   primaryYAxis: chart.NumericAxis(
+            //           //         //     axisLine: const chart.AxisLine(width: 0),
+            //           //         //     majorTickLines:
+            //           //         //         const chart.MajorTickLines(size: 0),
+            //           //         //   ),
+            //           //         // ),
+            //           //       ],
+            //           //     ),
+            //           //   ),
+            //           // ),
+            //           const SizedBox(
+            //             height: 5,
+            //           ),
+            //           //*Chart Room 3
+            //           // Card(
+            //           //   child: Container(
+            //           //     width: double.infinity,
+            //           //     height: 327,
+            //           //     color: Colors.white,
+            //           //     child: Column(
+            //           //       children: [
+            //           //         Padding(
+            //           //           padding: const EdgeInsets.all(5),
+            //           //           child: Row(
+            //           //             mainAxisAlignment: MainAxisAlignment.start,
+            //           //             children: [
+            //           //               Text(
+            //           //                 'Room 3',
+            //           //                 style: meTextStyle.copyWith(
+            //           //                   color: Colors.black,
+            //           //                 ),
+            //           //               ),
+            //           //               const Spacer(),
+            //           //               Image.asset('assets/images/divider.png'),
+            //           //               const SizedBox(
+            //           //                 width: 10,
+            //           //               ),
+            //           //               Text(
+            //           //                 'Suhu',
+            //           //                 style: meTextStyle.copyWith(
+            //           //                   color: Colors.black,
+            //           //                 ),
+            //           //               ),
+            //           //               const SizedBox(
+            //           //                 width: 10,
+            //           //               ),
+            //           //               Image.asset('assets/images/divider1.png'),
+            //           //               const SizedBox(
+            //           //                 width: 10,
+            //           //               ),
+            //           //               Text(
+            //           //                 'Kelembapan',
+            //           //                 style: meTextStyle.copyWith(
+            //           //                   color: Colors.black,
+            //           //                 ),
+            //           //               ),
+            //           //             ],
+            //           //           ),
+            //           //         ),
+            //           //         //!Ini kodingan chartnya
+            //           //         // chart.SfCartesianChart(
+            //           //         //   series: <chart.LineSeries<LiveData, int>>[
+            //           //         //     chart.LineSeries<LiveData, int>(
+            //           //         //         onRendererCreated:
+            //           //         //             (chart.ChartSeriesController
+            //           //         //                 controller) {
+            //           //         //           _chartSeriesController5 = controller;
+            //           //         //         },
+            //           //         //         dataSource: chartData5,
+            //           //         //         color: Colors.blue,
+            //           //         //         xValueMapper: (LiveData sales, _) =>
+            //           //         //             sales.time,
+            //           //         //         yValueMapper: (LiveData sales, _) =>
+            //           //         //             sales.speed),
+            //           //         //     chart.LineSeries<LiveData, int>(
+            //           //         //         onRendererCreated:
+            //           //         //             (chart.ChartSeriesController
+            //           //         //                 controller) {
+            //           //         //           _chartSeriesController6 = controller;
+            //           //         //         },
+            //           //         //         dataSource: chartData6,
+            //           //         //         color: Colors.red,
+            //           //         //         xValueMapper: (LiveData sales, _) =>
+            //           //         //             sales.time,
+            //           //         //         yValueMapper: (LiveData sales, _) =>
+            //           //         //             sales.speed),
+            //           //         //   ],
+            //           //         //   primaryXAxis: chart.NumericAxis(
+            //           //         //       majorGridLines:
+            //           //         //           const chart.MajorGridLines(width: 0),
+            //           //         //       edgeLabelPlacement:
+            //           //         //           chart.EdgeLabelPlacement.shift,
+            //           //         //       interval: 1,
+            //           //         //       title:
+            //           //         //           chart.AxisTitle(text: 'time(seconds)')),
+            //           //         //   primaryYAxis: chart.NumericAxis(
+            //           //         //     axisLine: const chart.AxisLine(width: 0),
+            //           //         //     majorTickLines:
+            //           //         //         const chart.MajorTickLines(size: 0),
+            //           //         //   ),
+            //           //         // ),
+            //           //       ],
+            //           //     ),
+            //           //   ),
+            //           // ),
+            //           const SizedBox(
+            //             height: 5,
+            //           ),
+            //           //*chart room 4
+            //           // Card(
+            //           //   child: Container(
+            //           //     width: double.infinity,
+            //           //     height: 327,
+            //           //     color: Colors.white,
+            //           //     child: Column(
+            //           //       children: [
+            //           //         Padding(
+            //           //           padding: const EdgeInsets.all(5),
+            //           //           child: Row(
+            //           //             mainAxisAlignment: MainAxisAlignment.start,
+            //           //             children: [
+            //           //               Text(
+            //           //                 'Room 4',
+            //           //                 style: meTextStyle.copyWith(
+            //           //                   color: Colors.black,
+            //           //                 ),
+            //           //               ),
+            //           //               const Spacer(),
+            //           //               Image.asset('assets/images/divider.png'),
+            //           //               const SizedBox(
+            //           //                 width: 10,
+            //           //               ),
+            //           //               Text(
+            //           //                 'Suhu',
+            //           //                 style: meTextStyle.copyWith(
+            //           //                   color: Colors.black,
+            //           //                 ),
+            //           //               ),
+            //           //               const SizedBox(
+            //           //                 width: 10,
+            //           //               ),
+            //           //               Image.asset('assets/images/divider1.png'),
+            //           //               const SizedBox(
+            //           //                 width: 10,
+            //           //               ),
+            //           //               Text(
+            //           //                 'Kelembapan',
+            //           //                 style: meTextStyle.copyWith(
+            //           //                   color: Colors.black,
+            //           //                 ),
+            //           //               ),
+            //           //             ],
+            //           //           ),
+            //           //         ),
+            //           //         //!Ini kodingan chartnya
+            //           //         // chart.SfCartesianChart(
+            //           //         //   series: <chart.LineSeries<LiveData, int>>[
+            //           //         //     chart.LineSeries<LiveData, int>(
+            //           //         //         onRendererCreated:
+            //           //         //             (chart.ChartSeriesController
+            //           //         //                 controller) {
+            //           //         //           _chartSeriesController7 = controller;
+            //           //         //         },
+            //           //         //         dataSource: chartData7,
+            //           //         //         color: Colors.blue,
+            //           //         //         xValueMapper: (LiveData sales, _) =>
+            //           //         //             sales.time,
+            //           //         //         yValueMapper: (LiveData sales, _) =>
+            //           //         //             sales.speed),
+            //           //         //     chart.LineSeries<LiveData, int>(
+            //           //         //         onRendererCreated:
+            //           //         //             (chart.ChartSeriesController
+            //           //         //                 controller) {
+            //           //         //           _chartSeriesController8 = controller;
+            //           //         //         },
+            //           //         //         dataSource: chartData8,
+            //           //         //         color: Colors.red,
+            //           //         //         xValueMapper: (LiveData sales, _) =>
+            //           //         //             sales.time,
+            //           //         //         yValueMapper: (LiveData sales, _) =>
+            //           //         //             sales.speed),
+            //           //         //   ],
+            //           //         //   primaryXAxis: chart.NumericAxis(
+            //           //         //       majorGridLines:
+            //           //         //           const chart.MajorGridLines(width: 0),
+            //           //         //       edgeLabelPlacement:
+            //           //         //           chart.EdgeLabelPlacement.shift,
+            //           //         //       interval: 1,
+            //           //         //       title:
+            //           //         //           chart.AxisTitle(text: 'time(seconds)')),
+            //           //         //   primaryYAxis: chart.NumericAxis(
+            //           //         //     axisLine: const chart.AxisLine(width: 0),
+            //           //         //     majorTickLines:
+            //           //         //         const chart.MajorTickLines(size: 0),
+            //           //         //   ),
+            //           //         // ),
+            //           //       ],
+            //           //     ),
+            //           //   ),
+            //           // ),
+            //           const SizedBox(
+            //             height: 30,
+            //           )
+            //         ],
+            //       ),
+            //     ),
+            //   ),
+            // ),
+          ],
+        ),
       ),
     );
+  }
+
+  Future<bool> showExitPopup() async {
+    return await showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+            title: const Text('Warning'),
+            content: const Text('Apakah Anda Yakin Ingin Keluar ?'),
+            actions: [
+              TextButton(
+                  onPressed: () => Navigator.of(context).pop(false),
+                  child: const Text('Tidak',
+                      style: TextStyle(color: Colors.grey, fontSize: 14))),
+              TextButton(
+                  onPressed: () => Navigator.of(context).pop(true),
+                  child: Text(
+                    "Iya",
+                    style: buttonStyle.copyWith(fontSize: 14),
+                  )),
+            ],
+          ),
+        ) ??
+        false; //if showDialouge had returned null, then return false
   }
 }
   //!Ini buat timer line grafik chartnya

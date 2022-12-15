@@ -12,7 +12,7 @@ class profilPage extends StatefulWidget {
 class _profilPageState extends State<profilPage> {
   late TextEditingController controller;
 
-  // var namaDepan = 'Nama depan user';
+  var namaDepan = 'Nama depan user';
   var namaBelakang = 'Nama belakang user';
   var asalInstitusi = 'Asal institusi user';
   var kegiatan = 'Kegiaran user';
@@ -23,13 +23,18 @@ class _profilPageState extends State<profilPage> {
   //     print(value); // Outputs "Hello"
   //   });
   // }
+  // void getData() async {
+  //   // Access the variable inside the Future like this:
+  //   var namadepan = await userLogin;
 
-  Future<void> userLogin(var namadepan) async {
-    //  String variable = await userLogin();
-    // print('user nama depan: $namadepan'); // Outputs "Hello"
-    var namaDepan = namadepan;
-    print(namaDepan);
-  }
+  //   // Use the variable here...
+  // }
+  // Future<void> userLogin(var namadepan) async {
+  //   //  String variable = await userLogin();
+  //   // print('user nama depan: $namadepan'); // Outputs "Hello"
+  //   var namaDepan = namadepan;
+  //   print(namaDepan);
+  // }
 
   @override
   void initState() {
