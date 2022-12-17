@@ -1,7 +1,10 @@
 // ignore_for_file: camel_case_types
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:mop_green/pages/MqttConnection.dart';
+import 'package:mqtt_client/mqtt_client.dart';
 import 'package:syncfusion_flutter_charts/charts.dart' as chart;
 import 'dart:math' as math;
 import 'package:mop_green/shared/shared.dart';
@@ -14,16 +17,64 @@ class room1 extends StatefulWidget {
 }
 
 class _room1State extends State<room1> {
-  late List<LiveData> chartData;
-  late List<LiveData> chartData1;
+  List<LiveData> chartData = getChartData();
+  List<LiveData> chartData1 = [];
   late chart.ChartSeriesController _chartSeriesController;
   late chart.ChartSeriesController _chartSeriesController1;
 
+  //connect mqtt
+  Future<void> setupMqttClient() async {
+    await mqttClientManager.connect();
+    mqttClientManager.subscribe("sensor");
+  }
+
+  void setupUpdatesListener() {
+    mqttClientManager
+        .getMessagesStream()!
+        .listen((List<MqttReceivedMessage<MqttMessage?>>? c) {
+      final recMess = c![0].payload as MqttPublishMessage;
+      final pt = jsonDecode(
+          MqttPublishPayload.bytesToStringAsString(recMess.payload.message));
+      // print('MQTTClient::Message received on topic: <${c[0].topic}> is $pt\n'));
+      chartData = chartData.reversed
+          .toList()
+          .asMap()
+          .entries
+          .where((element) => element.key < 19)
+          .map((e) => e.value)
+          .toList()
+          .reversed
+          .toList();
+
+      chartData.add(LiveData(chartData.length - 1, pt["temp1"]));
+      print(chartData);
+      //   pt["temp1"]
+      // ;
+
+      _chartSeriesController.updateDataSource(
+          addedDataIndex: chartData.length - 1, removedDataIndex: 0);
+
+      // setState(() {
+      //   suhu = jsonDecode(pt)["temp1"];
+      //   kelembapan = jsonDecode(pt)["humadity1"];
+      // }
+      // );
+    });
+  }
+
+  MQTTClientManager mqttClientManager = MQTTClientManager();
+
   @override
   void initState() {
-    chartData = getChartData();
-    chartData1 = getChartData2();
-    Timer.periodic(const Duration(seconds: 3), updateDataSource);
+    setupMqttClient().then((value) {
+      setupUpdatesListener();
+    });
+    // setupUpdatesListener();
+    // chartData = getChartData();
+    // chartData1 = getChartData2();
+    // Timer.periodic(const Duration(seconds: 3), (Timer timer) {
+    //   print(timer);
+    // });
     super.initState();
   }
 
@@ -113,6 +164,19 @@ class _room1State extends State<room1> {
   }
 
   int time = 19;
+  void updateDataoldSource(Timer timer) {
+    chartData.add(LiveData(time++, (math.Random().nextInt(60) + 30)));
+    chartData.removeAt(0);
+    _chartSeriesController.updateDataSource(
+        addedDataIndex: chartData.length - 1, removedDataIndex: 0);
+    chartData1.add(LiveData(time++, (math.Random().nextInt(60) + 30)));
+    chartData1.removeAt(0);
+    _chartSeriesController1.updateDataSource(
+        addedDataIndex: chartData1.length - 1, removedDataIndex: 0);
+  }
+
+  //new update data
+  //
   void updateDataSource(Timer timer) {
     chartData.add(LiveData(time++, (math.Random().nextInt(60) + 30)));
     chartData.removeAt(0);

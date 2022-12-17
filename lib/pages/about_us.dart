@@ -60,7 +60,7 @@ class aboutUs extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(
-                    height: 25,
+                    height: 20,
                   ),
                   const Text(
                     "Akbar Ramadhani Firdaus",
@@ -107,7 +107,7 @@ class aboutUs extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 8,
                   ),
                   const Text(
                     "Yunanta Dwi Kristanto",
@@ -154,7 +154,7 @@ class aboutUs extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(
-                    height: 25,
+                    height: 8,
                   ),
                   const Text(
                     "Restu Fahimuroid",
@@ -201,7 +201,7 @@ class aboutUs extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(
-                    height: 25,
+                    height: 21,
                   ),
                   const Text(
                     "David Arrozaqi",
@@ -248,7 +248,7 @@ class aboutUs extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(
-                    height: 25,
+                    height: 21,
                   ),
                   const Text(
                     "Khofifah Ainurrohmah",

@@ -12,11 +12,30 @@ class profilPage extends StatefulWidget {
 class _profilPageState extends State<profilPage> {
   late TextEditingController controller;
 
-  var namaDepan = 'Nama depan user';
-  var namaBelakang = 'Nama belakang user';
-  var asalInstitusi = 'Asal institusi user';
-  var kegiatan = 'Kegiaran user';
-  var email = 'Email user';
+  var namaDepan = '';
+  var namaBelakang = '';
+  var asalInstitusi = '';
+  var kegiatan = '';
+  var email = '';
+  String namaLengkap = '';
+
+  late SharedPreferences s_prefs;
+  var datauser = '';
+
+  _showSavedValue() async {
+    s_prefs = await SharedPreferences.getInstance();
+    setState(() {
+      datauser = s_prefs.getString("KEY_1").toString();
+      // print(datauser);
+      namaDepan = (jsonDecode(datauser)['nama_depan']).toString();
+      namaBelakang = (jsonDecode(datauser)['nama_belakang']).toString();
+      asalInstitusi = (jsonDecode(datauser)['asal_institusi']).toString();
+      kegiatan = (jsonDecode(datauser)['kegiatan']).toString();
+      email = (jsonDecode(datauser)['email']).toString();
+      print(datauser);
+      namaLengkap = namaDepan + ' ' + namaBelakang;
+    });
+  }
 
   // Future<void> accessVariable() async {
   //   await userLogin().then((value) {
@@ -38,9 +57,15 @@ class _profilPageState extends State<profilPage> {
 
   @override
   void initState() {
+    // namaLengkap = namaDepan + ' ' + namaBelakang;
     // userLogin();
+    _showSavedValue();
     super.initState();
 
+    // namaDepan = jsonDecode(datauser)[0]["nama_depan"];
+    // var hasiluser = jsonDecode(datauser);
+    // print(hasiluser);
+    // namaDepan = hasiluser['nama_depan'];
     controller = TextEditingController();
   }
 
@@ -72,11 +97,11 @@ class _profilPageState extends State<profilPage> {
       ),
       body: Column(
         children: [
-          const Card(
+          Card(
             margin: EdgeInsets.all(8),
             child: ListTile(
               contentPadding: EdgeInsets.all(20),
-              leading: Text("Profil Saya"),
+              leading: Text(namaLengkap.toString()),
               trailing: AvatarView(
                 radius: 30,
                 avatarType: AvatarType.CIRCLE,
@@ -104,7 +129,7 @@ class _profilPageState extends State<profilPage> {
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
-                      Text(namaBelakang,
+                      Text(namaDepan,
                           maxLines: 1,
                           style: const TextStyle(
                               color: Colors.grey, fontSize: 12)),

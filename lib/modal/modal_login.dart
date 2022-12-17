@@ -22,6 +22,10 @@ class _bottomSheetLoginState extends State<bottomSheetLogin> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
+  late SharedPreferences s_prefs;
+
+  String datadiri = '';
+
   Future userLogin(
     String email,
     String password,
@@ -29,7 +33,7 @@ class _bottomSheetLoginState extends State<bottomSheetLogin> {
     HttpOverrides.global = MyHttpOverrides();
 
     // SERVER LOGIN API URL
-    var url = 'http://192.168.1.14/1.%20KULIAH/MOP-Green/login.php';
+    var url = 'http://192.168.0.121/1.%20KULIAH/MOP-Green/login.php';
     //  Uri.parse(url);
 
     // Store all data with Param Name.
@@ -43,11 +47,15 @@ class _bottomSheetLoginState extends State<bottomSheetLogin> {
     // var message = response.body;
     // print(message);
     var datauser = response.body;
-    var hasiluser = jsonDecode(datauser);
-    var namadepan = hasiluser['nama_depan'];
-    var namabelakang = hasiluser['nama_belakang'];
-    var asalinstitusi = hasiluser['asal_institusi'];
-    var kegiatan = hasiluser['kegiatan'];
+
+    s_prefs = await SharedPreferences.getInstance();
+    s_prefs.setString("KEY_1", datauser.toString());
+
+    // var hasiluser = jsonDecode(datauser);
+    // var namadepan = hasiluser['nama_depan'];
+    // var namabelakang = hasiluser['nama_belakang'];
+    // var asalinstitusi = hasiluser['asal_institusi'];
+    // var kegiatan = hasiluser['kegiatan'];
 
     // var message2 = response.statusCode;
     // print(message2);
