@@ -35,7 +35,7 @@ class _BottomSheetRegisterState extends State<BottomSheetRegister> {
     HttpOverrides.global = MyHttpOverrides();
 
     // SERVER LOGIN API URL
-    var url = 'http://192.168.0.121/1.%20KULIAH/MOP-Green/register.php';
+    var url = 'http://mopgreen.my.id/register.php';
     //  Uri.parse(url);
 
     // Store all data with Param Name.

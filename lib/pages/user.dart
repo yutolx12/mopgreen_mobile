@@ -10,6 +10,39 @@ class userPage extends StatefulWidget {
 }
 
 class _userPageState extends State<userPage> {
+  var id = '';
+  var namaDepan = '';
+  var namaBelakang = '';
+  var asalInstitusi = '';
+  var kegiatan = '';
+  var email = '';
+  String namaLengkap = '';
+
+  late SharedPreferences s_prefs;
+  var datauser = '';
+
+  void _showSavedValue() async {
+    s_prefs = await SharedPreferences.getInstance();
+    setState(() {
+      datauser = s_prefs.getString("KEY_1").toString();
+      // print(datauser);
+      id = (jsonDecode(datauser)['id']).toString();
+      namaDepan = (jsonDecode(datauser)['nama_depan']).toString();
+      namaBelakang = (jsonDecode(datauser)['nama_belakang']).toString();
+      asalInstitusi = (jsonDecode(datauser)['asal_institusi']).toString();
+      kegiatan = (jsonDecode(datauser)['kegiatan']).toString();
+      email = (jsonDecode(datauser)['email']).toString();
+      print(datauser);
+      namaLengkap = namaDepan + ' ' + namaBelakang;
+      print(namaLengkap);
+    });
+  }
+
+  @override
+  void initState() {
+    _showSavedValue();
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -49,7 +82,7 @@ class _userPageState extends State<userPage> {
                     ),
                   ),
                   title: Text(
-                    "Nama User",
+                    namaLengkap,
                     style: wikwokTextStyle.copyWith(
                         fontWeight: FontWeight.bold, color: Colors.black),
                   ),
@@ -218,6 +251,7 @@ class _userPageState extends State<userPage> {
             actions: [
               TextButton(
                   onPressed: () {
+                    // delrecord(id);
                     setState(() {
                       Navigator.pop(context);
                     });
@@ -226,6 +260,7 @@ class _userPageState extends State<userPage> {
                       style: TextStyle(color: Colors.grey, fontSize: 14))),
               TextButton(
                   onPressed: () {
+                    delrecord(id);
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
@@ -270,4 +305,22 @@ class _userPageState extends State<userPage> {
                   )),
             ],
           ));
+
+  Future<void> delrecord(String id) async {
+    print(id);
+    try {
+      var data = {"id": id};
+      String uri =
+          "https://192.168.1.8/1.%20KULIAH/MOP-Green/apiapideluser.php";
+      var res = await http.post(Uri.parse(uri), body: json.encode(data));
+      var response = jsonDecode(res.body);
+      if (response["success"] == true) {
+        print("data berhasil dihapus");
+      } else {
+        print("Terjadi kendala silakan ulangi!");
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
 }

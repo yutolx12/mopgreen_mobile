@@ -11,7 +11,12 @@ class profilPage extends StatefulWidget {
 
 class _profilPageState extends State<profilPage> {
   late TextEditingController controller;
+  late TextEditingController controller2;
+  late TextEditingController controller3;
+  late TextEditingController controller4;
+  late TextEditingController controller5;
 
+  var id = '';
   var namaDepan = '';
   var namaBelakang = '';
   var asalInstitusi = '';
@@ -27,6 +32,7 @@ class _profilPageState extends State<profilPage> {
     setState(() {
       datauser = s_prefs.getString("KEY_1").toString();
       // print(datauser);
+      id = (jsonDecode(datauser)['id']).toString();
       namaDepan = (jsonDecode(datauser)['nama_depan']).toString();
       namaBelakang = (jsonDecode(datauser)['nama_belakang']).toString();
       asalInstitusi = (jsonDecode(datauser)['asal_institusi']).toString();
@@ -67,11 +73,19 @@ class _profilPageState extends State<profilPage> {
     // print(hasiluser);
     // namaDepan = hasiluser['nama_depan'];
     controller = TextEditingController();
+    controller2 = TextEditingController();
+    controller3 = TextEditingController();
+    controller4 = TextEditingController();
+    controller5 = TextEditingController();
   }
 
   @override
   void dispose() {
     controller.dispose();
+    controller2.dispose();
+    controller3.dispose();
+    controller4.dispose();
+    controller5.dispose();
 
     super.dispose();
   }
@@ -137,7 +151,7 @@ class _profilPageState extends State<profilPage> {
                     ],
                   ),
                   onTap: () async {
-                    controller.text = namaBelakang;
+                    controller.text = namaDepan;
                     await openDialog();
                     // final namaDepan = await openDialog();
                     // if (namaDepan == null || namaDepan.isEmpty) return;
@@ -163,7 +177,7 @@ class _profilPageState extends State<profilPage> {
                     ],
                   ),
                   onTap: () async {
-                    controller.text = namaBelakang;
+                    controller2.text = namaBelakang;
                     await openDialog2();
                     // final namaBelakang = await openDialog2();
                     // if (namaBelakang == null || namaBelakang.isEmpty) return;
@@ -190,7 +204,7 @@ class _profilPageState extends State<profilPage> {
                     ],
                   ),
                   onTap: () async {
-                    controller.text = asalInstitusi;
+                    controller3.text = asalInstitusi;
                     await openDialog3();
                     // final asalInstitusi = await openDialog3();
                     // if (asalInstitusi == null || asalInstitusi.isEmpty) return;
@@ -216,7 +230,7 @@ class _profilPageState extends State<profilPage> {
                     ],
                   ),
                   onTap: () async {
-                    controller.text = kegiatan;
+                    controller4.text = kegiatan;
                     await openDialog4();
                     // final kegiatan = await openDialog4();
                     // if (kegiatan == null || kegiatan.isEmpty) return;
@@ -242,7 +256,7 @@ class _profilPageState extends State<profilPage> {
                     ],
                   ),
                   onTap: () async {
-                    controller.text = email;
+                    controller5.text = email;
                     await openDialog5();
                     // final email = await openDialog5();
                     // if (email == null || email.isEmpty) return;
@@ -291,8 +305,11 @@ class _profilPageState extends State<profilPage> {
   void submit() {
     // controller.text = "";
     setState(() {
-      namaBelakang = controller.text;
+      namaDepan = controller.text;
+      // namaLengkap = namaDepan + ' ' + namaLengkap;
     });
+    // print(controller.text);
+    updatefn(id, namaDepan);
     Navigator.of(context).pop();
 
     // controller.clear();
@@ -308,13 +325,13 @@ class _profilPageState extends State<profilPage> {
               autofocus: true,
               decoration:
                   const InputDecoration(hintText: 'Masukan Nama Belakang Anda'),
-              controller: controller,
+              controller: controller2,
             ),
             actions: [
               TextButton(
                   onPressed: () {
                     setState(() {
-                      controller.text = "";
+                      controller2.text = "";
                       Navigator.pop(context);
                     });
                   },
@@ -330,8 +347,9 @@ class _profilPageState extends State<profilPage> {
           ));
   void submit2() {
     setState(() {
-      namaBelakang = controller.text;
+      namaBelakang = controller2.text;
     });
+    updateln(id, namaBelakang);
     Navigator.of(context).pop();
 
     // controller.clear();
@@ -347,13 +365,13 @@ class _profilPageState extends State<profilPage> {
               autofocus: true,
               decoration: const InputDecoration(
                   hintText: 'Masukan Asal Institusi Anda'),
-              controller: controller,
+              controller: controller3,
             ),
             actions: [
               TextButton(
                   onPressed: () {
                     setState(() {
-                      controller.text = "";
+                      controller3.text = "";
                       Navigator.pop(context);
                     });
                   },
@@ -370,8 +388,9 @@ class _profilPageState extends State<profilPage> {
   void submit3() {
     // controller.text = "";
     setState(() {
-      asalInstitusi = controller.text;
+      asalInstitusi = controller3.text;
     });
+    updateasalins(id, asalInstitusi);
     Navigator.of(context).pop();
 
     // controller.clear();
@@ -387,13 +406,13 @@ class _profilPageState extends State<profilPage> {
               autofocus: true,
               decoration:
                   const InputDecoration(hintText: 'Masukan Kegiatan Anda'),
-              controller: controller,
+              controller: controller4,
             ),
             actions: [
               TextButton(
                   onPressed: () {
                     setState(() {
-                      controller.text = "";
+                      controller4.text = "";
                       Navigator.pop(context);
                     });
                   },
@@ -410,8 +429,9 @@ class _profilPageState extends State<profilPage> {
   void submit4() {
     // controller.text = "";
     setState(() {
-      kegiatan = controller.text;
+      kegiatan = controller4.text;
     });
+    updatekeg(id, kegiatan);
     Navigator.of(context).pop();
 
     // controller.clear();
@@ -426,13 +446,13 @@ class _profilPageState extends State<profilPage> {
               maxLength: 40,
               autofocus: true,
               decoration: const InputDecoration(hintText: 'Masukan Email Anda'),
-              controller: controller,
+              controller: controller5,
             ),
             actions: [
               TextButton(
                   onPressed: () {
                     setState(() {
-                      controller.text = "";
+                      controller5.text = "";
                       Navigator.pop(context);
                     });
                   },
@@ -449,10 +469,106 @@ class _profilPageState extends State<profilPage> {
   void submit5() {
     // controller.text = "";
     setState(() {
-      email = controller.text;
+      email = controller5.text;
     });
+    updateemail(id, email);
     Navigator.of(context).pop();
 
     // controller.clear();
+  }
+
+  Future<void> updatefn(String id, String namaDepan) async {
+    print(id);
+    print(namaDepan);
+    try {
+      var data = {"id": id, "nama_depan": namaDepan};
+      String uri =
+          "https://192.168.1.8/1.%20KULIAH/MOP-Green/apiapiupdatefn.php";
+      var res = await http.post(Uri.parse(uri), body: json.encode(data));
+      var response = jsonDecode(res.body);
+      if (response["success"] == true) {
+        print("data berhasil dihapus");
+      } else {
+        print("Terjadi kendala silakan ulangi!");
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<void> updateln(String id, String namaBelakang) async {
+    print(id);
+    print(namaBelakang);
+    try {
+      var data = {"id": id, "nama_belakang": namaBelakang};
+      String uri =
+          "https://192.168.1.8/1.%20KULIAH/MOP-Green/apiapiupdateln.php";
+      var res = await http.post(Uri.parse(uri), body: json.encode(data));
+      var response = jsonDecode(res.body);
+      if (response["success"] == true) {
+        print("data berhasil dihapus");
+      } else {
+        print("Terjadi kendala silakan ulangi!");
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<void> updateasalins(String id, String asalInstitusi) async {
+    print(id);
+    print(asalInstitusi);
+    try {
+      var data = {"id": id, "asal_instituso": asalInstitusi};
+      String uri =
+          "https://192.168.1.8/1.%20KULIAH/MOP-Green/apiapiupdateasalins.php";
+      var res = await http.post(Uri.parse(uri), body: json.encode(data));
+      var response = jsonDecode(res.body);
+      if (response["success"] == true) {
+        print("data berhasil dihapus");
+      } else {
+        print("Terjadi kendala silakan ulangi!");
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<void> updatekeg(String id, String kegiatan) async {
+    print(id);
+    print(kegiatan);
+    try {
+      var data = {"id": id, "kegiatan": kegiatan};
+      String uri =
+          "https://192.168.1.8/1.%20KULIAH/MOP-Green/apiapiupdatekeg.php";
+      var res = await http.post(Uri.parse(uri), body: json.encode(data));
+      var response = jsonDecode(res.body);
+      if (response["success"] == true) {
+        print("data berhasil dihapus");
+      } else {
+        print("Terjadi kendala silakan ulangi!");
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<void> updateemail(String id, String email) async {
+    print(id);
+    print(email);
+    try {
+      var data = {"id": id, "email": email};
+      String uri =
+          "https://192.168.1.8/1.%20KULIAH/MOP-Green/apiapiupdateemail.php";
+      var res = await http.post(Uri.parse(uri), body: json.encode(data));
+      var response = jsonDecode(res.body);
+      if (response["success"] == true) {
+        print("data berhasil dihapus");
+      } else {
+        print("Terjadi kendala silakan ulangi!");
+      }
+    } catch (e) {
+      print(e);
+    }
   }
 }

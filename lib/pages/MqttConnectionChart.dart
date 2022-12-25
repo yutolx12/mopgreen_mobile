@@ -26,7 +26,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 int random = Random().nextInt(4294967296);
 final randomrandom = random.toString();
 
-class MQTTClientManager {
+class MQTTClientManagerChart {
   MqttServerClient client =
       MqttServerClient.withPort('159.223.72.149', randomrandom, 1883);
 

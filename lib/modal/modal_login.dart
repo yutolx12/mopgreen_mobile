@@ -33,7 +33,8 @@ class _bottomSheetLoginState extends State<bottomSheetLogin> {
     HttpOverrides.global = MyHttpOverrides();
 
     // SERVER LOGIN API URL
-    var url = 'http://192.168.0.121/1.%20KULIAH/MOP-Green/login.php';
+    // var url = 'http://mopgreen.my.id/login.php';
+    var url = 'https://192.168.1.8/1.%20KULIAH/MOP-Green/login.php';
     //  Uri.parse(url);
 
     // Store all data with Param Name.
